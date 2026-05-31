@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>Audrix - Real-Time Speech-to-Text That Just Works</title>
+    <meta name="description" content="Audrix is a real-time speech-to-text engine. Capture microphone or system audio, transcribe instantly with noise suppression, crosstalk detection. Runs entirely offline on Windows.">
+    <meta name="keywords" content="speech to text, real-time transcription, offline STT, local transcription, windows audio capture, system audio, noise suppression, crosstalk detection">
+    <meta name="author" content="Tetramatrix">
+    <meta property="og:title" content="Audrix - Real-Time Speech-to-Text That Just Works">
+    <meta property="og:description" content="Real-time speech-to-text. Mic or system audio capture, noise suppression, offline operation. Portable.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <div id="api-notice" style="position: fixed; top: 0; left: 0; right: 0; background: #00ff00; color: #ff00ff; text-align: center; padding: 10px; z-index: 1000; font-weight: bold;">
+        ⚡ Real-Time STT Running Entirely Offline on Your Windows Machine. No Cloud, No Limits. ⚡
+    </div>
+
+    <aside class="left">
+        <nav class="fixed-nav">
+        </nav>
+    </aside>
+
+    <aside class="right">
+    </aside>
+
+    <main class="wikidoc">
+        <!-- Hero Section -->
+        <section class="hero" data-no-toggle="true">
+          <div class="hero-eyebrow">
+            <span class="badge-dot"></span>
+            Real-Time Speech-to-Text / STT Engine
+          </div>
+          <h1>Real-time transcription.<br><em>No cloud required.</em></h1>
+          <p class="hero-sub">
+            Audrix is a real-time speech-to-text engine.
+            Capture microphone or system audio, transcribe instantly with noise suppression and crosstalk detection.
+            Runs entirely offline on Windows.
+          </p>
+          <div class="hero-actions">
+            <a href="https://github.com/Tetramatrix/Audrix" class="btn-primary">Get Audrix</a>
+            <a href="#why-audrix-h2" class="btn-outline">See all features ↓</a>
+          </div>
+          <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-number">🎤</span>
+                <span class="stat-label">System Audio</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">🔇</span>
+                <span class="stat-label">Noise Suppression</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Backends</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Offline</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">0ms</span>
+                <span class="stat-label">Cloud Latency</span>
+              </div>
+          </div>
+        </section>
+
+        <!-- Architecture Showcase -->
+        <section class="showcase" id="architecture-showcase" data-no-toggle="true">
+          <div class="screenshot-wrap">
+             <div style="padding: 40px; text-align: center; color: #cccccc;">
+               <p style="font-size: 1.2em; margin-bottom: 20px;">
+                 <strong>Audio Input</strong> → Capture Engine → <strong>Audrix Engine</strong> → <strong>Transcription Model</strong> → Real-Time Transcript
+               </p>
+               <p style="font-size: 0.9em; color: #888;">
+                 High-performance audio capture with orchestration layer
+               </p>
+             </div>
+          </div>
+          <div class="floating-badges">
+            <span class="badge free"><span class="badge-dot"></span> PORTABLE</span>
+            <span class="badge cloud"><span class="badge-dot"></span> LOW LATENCY</span>
+            <span class="badge local"><span class="badge-dot"></span> OFFLINE</span>
+          </div>
+          <p class="screenshot-caption">
+            Raw PCM audio from capture engine → real-time transcription → instant results. No buffering, no waiting.
+          </p>
+        </section>
+
+        <!-- Horizontal Navigation Bar -->
+        <nav class="horizontal-toc-nav">
+            <ul>
+                <li><a href="#overview-h2">Overview</a></li>
+                <li><a href="#why-audrix-h2">Why Audrix</a></li>
+                <li><a href="#core-features-h2">Core Features</a></li>
+                <li><a href="#backends-h2">Backends</a></li>
+                <li><a href="#audio-h2">Audio Capture</a></li>
+                <li><a href="#setup-h2">Setup</a></li>
+            </ul>
+        </nav>
+
+    <!-- Overview Section -->
+     <h2 id="overview-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
+          <span class="h2-icon">▶</span> Overview - Your Audio, Transcribed Instantly
+     </h2>
+    <section class="overview-section" id="overview" style="display:none;">
+    <section class="inspiration-section" id="inspiration">
+        <div class="cta-box">
+            
+            <p>We needed real-time speech-to-text that respects privacy and runs locally. Existing solutions were either cloud-dependent, too slow, or couldn't capture system audio. So we built Audrix: a high-performance STT engine.</p>
+        </div>
+    </section>
+
+        <h3 id="what-is-audrix-h2">About Audrix</h3>
+        <section class="intro-section" id="what-is-audrix">
+            <div class="cta-box">
+
+                <p><strong>Audrix is a real-time speech-to-text engine that captures audio from your microphone or system output and transcribes it instantly.</strong> Built for low-latency transcription with configurable noise suppression, automatic crosstalk detection to separate speakers, and support for multiple inference backends. Everything runs locally - your audio never leaves your machine.</p>
+            </div>
+        </section>
+    </section>
+
+      <h2 id="why-audrix-h2" onclick="toggleSectionFromH2(this)">💡 Why Audrix - Because Local STT Shouldn't Be Hard</h2>
+    <section class="why-audrix-section" id="why-audrix" style="display:none;">
+        <section class="feature-details-section" id="feature-details">
+
+            <!-- Privacy -->
+            <div class="cta-box feature-detail-group">
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> 🔒 Your Audio Never Leaves Your Machine
+                </h3>
+            <div class="feature-detail-content" style="display:none;">
+                <div class="cta-box">
+                    <ul>
+                            <li><strong>100% local:</strong> All processing on your machine, zero external calls</li>
+                            <li><strong>No internet required:</strong> Works completely offline after initial setup</li>
+                            <li><strong>Data sovereignty:</strong> Your transcripts stay yours, stored locally wherever you choose</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> ⚡ Real-Time Performance, Not Batch Jobs
+                </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <p><strong>The problem:</strong> Traditional STT tools require you to record first, then process later. You lose the ability to react, search, or act on spoken content while it's happening.</p>
+                        <p><strong>How Audrix fixes it:</strong> Audrix transcribes audio in real-time as it's captured. See text appear the moment words are spoken - perfect for live captions, meeting notes, or voice commands.</p>
+                        <ul>
+                            <li><strong>Low-latency pipeline:</strong> Audio captured and processed immediately</li>
+                            <li><strong>Configurable chunking:</strong> Adjustable commit intervals and buffer sizes for your hardware</li>
+                            <li><strong>Partial results:</strong> Get interim transcripts before finalization for faster feedback</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> 🎤 Mic + System Audio (Loopback) Capture
+                </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <p><strong>The problem:</strong> Most STT tools only capture microphone input. You can't transcribe YouTube videos, meetings from Zoom/Teams, or any audio playing through your speakers.</p>
+                        <p><strong>How Audrix fixes it:</strong> Audrix captures from both microphone and system audio. Transcribe your voice, any app's audio, or both simultaneously with dual-stream mode.</p>
+                        <ul>
+                            <li><strong>Microphone capture:</strong> Standard voice input with configurable device selection</li>
+                            <li><strong>System audio capture:</strong> Record any audio playing through your system</li>
+                            <li><strong>Dual-stream mode:</strong> Capture mic and system audio simultaneously, with separate speaker labels</li>
+                            <li><strong>Device selection:</strong> Choose specific input devices by system ID</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> 🎯 Automatic Crosstalk & Noise Suppression
+                </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <p><strong>The problem:</strong> In meetings or calls with multiple speakers, transcription becomes messy. Background noise and overlapping speech corrupt results.</p>
+                        <p><strong>How Audrix fixes it:</strong> Built-in noise gate and crosstalk suppression filters out low-volume noise, and when using dual-stream mode, Audrix can distinguish between the local user (mic) and remote participants (system audio) based on audio characteristics.</p>
+                        <ul>
+                            <li><strong>Noise gate:</strong> Configurable threshold filters out silence and background hum</li>
+                            <li><strong>Crosstalk suppression:</strong> Dual-stream mode distinguishes user vs remote speakers</li>
+                            <li><strong>Speaker labeling:</strong> Automatic "User" / "Remote" tags in transcripts</li>
+                            <li><strong>RMS + peak analysis:</strong> Dual-threshold detection for accurate voice activity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> 🔌 Flexible Backend Architecture
+                </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <p><strong>The problem:</strong> STT tools lock you into a single model or service. Switching requires reinstalling or reconfiguring everything.</p>
+                        <p>Audrix supports multiple transcription backends through a unified adapter interface. Switch between Whisper, Lemonade NPU-accelerated servers, or external WebSocket endpoints without changing your code.</p>
+                        <ul>
+                            <li><strong>Whisper backend:</strong> Default high-performance local server</li>
+                            <li><strong>Lemonade backend:</strong> AMD Ryzen NPU acceleration via FastFlowLM</li>
+                            <li><strong>External backends:</strong> Connect to any WebSocket or HTTP transcription server</li>
+                            <li><strong>Hot-swappable:</strong> Change backends at runtime via configuration</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </section>
+
+     <h2 id="core-features-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
+         <span class="h2-icon">▶</span> Core Features
+     </h2>
+     <section class="core-features-section" id="core-features" style="display:none;">
+         <h3 id="audio-capture-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                 <span class="toggle-icon">▶</span> Audio Capture
+         </h3>
+        <section class="audio-section" id="audio-capture" style="display:none;">
+            <div class="cta-box">
+
+                
+                <p>Versatile audio capture with extensive configuration options:</p>
+                <p style="font-size: 0.9em; color: #888; margin-top: 8px;"><em>Powered by industry-standard open-source audio technology.</em></p>
+                <ul>
+                    <li><strong>System audio capture:</strong> Record any audio playing through your computer - YouTube, Zoom, music, meetings</li>
+                    <li><strong>Channels:</strong> Mono (1) or stereo (2) capture</li>
+                    <li><strong>Buffer sizes:</strong> Adjustable frames per buffer and commit intervals</li>
+                    <li><strong>Auto-gain:</strong> Configurable peak target and maximum gain normalization</li>
+                    <li><strong>Device selection:</strong> Choose specific audio input devices by system ID</li>
+                </ul>
+            </div>
+        </section>
+
+        <h3 id="transcription-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span> Transcription Engine
+        </h3>
+        <section class="transcription-section" id="transcription" style="display:none;">
+            <div class="cta-box">
+
+                
+                <p>High-accuracy transcription engine with intelligent merging and analysis:</p>
+                <ul>
+                    <li><strong>Real-time streaming:</strong> Continuous transcription as audio arrives</li>
+                    <li><strong>Smart merging:</strong> Word and character overlap detection prevents duplicate text</li>
+                    <li><strong>Partial results:</strong> Interim transcripts with configurable debounce timing</li>
+                    <li><strong>Language support:</strong> Multi-language auto-detection and routing</li>
+                    <li><strong>LLM analysis:</strong> Optional transcript analysis for topics, action items, decisions</li>
+                    <li><strong>Token-efficient:</strong> Prefer completed over delta transcripts to reduce noise</li>
+                </ul>
+            </div>
+        </section>
+
+        <h3 id="noise-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span> Noise &amp; Crosstalk Handling
+        </h3>
+        <section class="noise-section" id="noise-handling" style="display:none;">
+            <div class="cta-box">
+
+                
+                <p>Advanced audio preprocessing for clean transcripts:</p>
+                <ul>
+                    <li><strong>Noise gate:</strong> Silence detection using peak and RMS thresholds</li>
+                    <li><strong>Auto-gain control:</strong> Normalize audio levels for consistent transcription</li>
+                    <li><strong>Crosstalk suppression:</strong> Dual-stream mode distinguishes user vs remote speakers</li>
+                    <li><strong>Speaker labeling:</strong> Automatic "User" / "Remote" tags in dual-stream transcripts</li>
+                    <li><strong>Overlap window:</strong> Configurable time window (default 3000ms) for crosstalk analysis</li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+     <h2 id="backends-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
+         <span class="h2-icon">▶</span> Backends &amp; Models
+     </h2>
+    <section class="backends-section" id="backends" style="display:none;">
+        <section class="technical-section" id="backend-details">
+            <div class="cta-box feature-detail-group">
+
+
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> Supported Backends
+                </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <ul>
+                            <li><strong>Whisper:</strong> Default high-performance local server</li>
+                            <li><strong>Lemonade:</strong> AMD NPU-accelerated server (FastFlowLM integration)</li>
+                            <li><strong>External:</strong> Any WebSocket or HTTP transcription endpoint</li>
+                            <li><strong>Model flexibility:</strong> Support for multiple open-source speech recognition models</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> Lemonade + NPU Acceleration
+                </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <p>For AMD Ryzen systems with NPU, Audrix integrates with <strong>Lemonade</strong> server and <strong>FastFlowLM</strong> for hardware-accelerated transcription:</p>
+                        <ul>
+                            <li><strong>NPU offload:</strong> Large speech model runs on Ryzen AI NPU</li>
+                            <li><strong>Auto-discovery:</strong> Automatically finds Lemonade server on localhost:8020</li>
+                            <li><strong>WebSocket streaming:</strong> Real-time transcription via ws://localhost:9000</li>
+                            <li><strong>Graceful fallback:</strong> Falls back to CPU if NPU unavailable</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                    <span class="toggle-icon">▶</span> Hardware Requirements
+                </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <ul>
+                            <li><strong>Minimum:</strong> 4GB RAM, any modern CPU</li>
+                            <li><strong>Recommended:</strong> 8GB+ RAM for larger models</li>
+                            <li><strong>NPU acceleration:</strong> AMD Ryzen 7040+ series with XDNA NPU</li>
+                            <li><strong>Audio device:</strong> Standard microphone or any sound card</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <h2 id="audio-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
+        <span class="h2-icon">▶</span> Audio Capture Deep Dive
+    </h2>
+    <section class="audio-deep-section" id="audio-deep" style="display:none;">
+        <div class="cta-box">
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span> Audio Capture
+            </h3>
+            <div class="feature-detail-content" style="display:none;">
+                <div class="cta-box">
+                    <p>Audrix captures audio directly from your microphone or system output with minimal overhead:</p>
+                    <ul>
+                        <li><strong>Low-latency capture:</strong> Audio is captured and processed with minimal delay</li>
+                        <li><strong>Reliable streaming:</strong> Stable audio delivery to the transcription engine</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span> Configuration Options
+            </h3>
+                <div class="feature-detail-content" style="display:none;">
+                    <div class="cta-box">
+                        <ul>
+                        <li><strong>Sample rate:</strong> Default 16000 Hz for optimal transcription quality, adjustable</li>
+                        <li><strong>Frames per buffer:</strong> 11025 default (configurable for latency/CPU trade-off)</li>
+                        <li><strong>Commit interval:</strong> How often to send accumulated audio to transcriber</li>
+                        <li><strong>Overlap buffers:</strong> Continuity between chunks for better word boundary detection</li>
+                        <li><strong>Auto-gain:</strong> Peak normalization with configurable target (default 0.25)</li>
+                        <li><strong>Silence thresholds:</strong> Peak (0.015) and RMS (0.003) for voice activity detection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 id="setup-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
+        <span class="h2-icon">▶</span> Setup
+    </h2>
+    <section class="setup-section" id="setup" style="display:none;">
+        <div class="cta-box">
+            <p><strong>Your audio deserves a transcription engine that actually works for it.</strong> Download Audrix today. Runs fully offline, no cloud. Build a personal speech-to-text workspace that gets smarter every time you use it.</p>
+
+            <div class="download-buttons">
+                <a href="https://github.com/Tetramatrix/Audrix" class="btn-partner">Download</a>
+            </div>
+
+            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">No installation required for portable version. Your data stays on your machine.</p>
+
+            <h3 id="system-requirements-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span> System Requirements
+            </h3>
+            <div class="feature-detail-content" style="display:none;">
+                <div class="cta-box">
+                    <table class="req-table">
+                        <tr><th>Component</th><th>Minimum</th></tr>
+                        <tr><td>OS</td><td>Windows 10/11 (64-bit)</td></tr>
+                        <tr><td>CPU</td><td>Modern x64 processor</td></tr>
+                        <tr><td>RAM</td><td>4 GB</td></tr>
+                        <tr><td>Storage</td><td>2 GB (app + model)</td></tr>
+                        <tr><td>Audio</td><td>Standard microphone or any sound card</td></tr>
+                        <tr><td>Optional NPU</td><td>AMD Ryzen 7040+ with XDNA (for Lemonade backend)</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <h2 id="support-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
+         <span class="h2-icon">▶</span> Support &amp; Community
+     </h2>
+     <section class="support-wrapper-section" id="support" style="display:none;">
+     <section class="support-section" id="support-donations">
+        
+        <div class="cta-box">
+            
+            <h3>Join our Discord community</h3>
+            <div class="external-links">
+                <a href="https://discord.gg/4QkQSfSATF" target="_blank" class="btn btn-primary">Audrix Discord</a>
+            </div>
+         
+    
+        </div>
+    </section>
+    </section>
+
+		<h2 id="discover-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
+            <span class="h2-icon">▶</span> Discover
+        </h2>
+    <section class="discover-wrapper-section" id="discover" style="display:none;">
+    <section class="other-products-section" id="other-products">
+
+        <div class="cta-box feature-detail-group">
+            
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span>Sorana - Your Personal AI That Actually Knows You
+            </h3>
+        <div class="feature-detail-content" style="display:none;" id="sorana-intro">
+            
+            <p>Sorana is your personal AI knowledge workspace, a second brain that actually acts. Unlike chatbots that forget you the moment you close the window, Sorana builds a lasting memory of your projects, files, and thinking style. Open it tomorrow and it already knows where you left off. Visualise your entire knowledge base on a spatial 2D canvas (like Obsidian Canvas, but AI-powered), chat with any document in plain language, and let your AI handle repetitive tasks, organising files, researching topics, managing emails, all without leaving your workspace. Everything runs on your machine. Your data stays yours.</p>
+            <figure class="screenshot-figure">
+                <a href="https://tetramatrix.github.io/Sorana" target="_blank"><img src="sorana.png" alt="Sorana Personal AI Knowledge Workspace Interface" class="sorana-screenshot"></a>
+                <figcaption>Sorana: Personal AI workspace with spatial knowledge canvas, persistent memory, and document chat - all running privately on your machine.</figcaption>
+            </figure>
+
+			<div class="cta-box feature-detail-group">
+	
+             <h4 class="style-box">Website &amp; Community</h4>
+            <div class="download-buttons">
+                <a href="https://tetramatrix.github.io/Sorana" target="_blank" class="btn btn-primary">🌐 Website</a>
+                <a href="https://discord.gg/4QkQSfSATF" target="_blank" class="btn btn-primary">💬 Discord</a>
+            </div>
+            
+            <h4 class="style-box">Featured on Microsoft Store:</h4>
+            <p>
+                <a href="https://apps.microsoft.com/store/detail/9N8C43PZC1RN" target="_blank"><img src="ms-store.svg" width="200px" height="60px" alt="Get it from Microsoft" /></a>
+            </p>
+        </div>
+		</div>
+
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span>TabNeuron - AI Spatial Tab Manager &amp; Research Workspace
+            </h3>
+        <div class="feature-detail-content" style="display:none;" id="tabneuron-intro">
+
+            
+            <p>TabNeuron breaks your browser tabs out of the tab bar and maps them onto a 2D canvas. AI automatically groups them by content, you can chat with any page or the live internet, deploy no-code research agents, and sync your layout back to Chrome Tab Groups, all from a portable desktop app that runs fully offline with a built-in model.</p>
+            <figure class="screenshot-figure">
+                <a href="http://tetramatrix.github.io/TabNeuron" target="_blank"><img src="tabneuron.png" alt="TabNeuron AI Spatial Tab Manager Interface" class="sorana-screenshot"></a>
+                <figcaption>TabNeuron: Browser tabs organized on an infinite 2D canvas with AI-powered grouping</figcaption>
+            </figure>
+
+			<div class="cta-box feature-detail-group">
+	
+             <h4 class="style-box">Website &amp; Community</h4>
+            <div class="download-buttons">
+                <a href="http://tetramatrix.github.io/TabNeuron" target="_blank" class="btn btn-primary">🌐 Website</a>
+                <a href="https://discord.gg/4QkQSfSATF" target="_blank" class="btn btn-primary">💬 Discord</a>
+            </div>
+            
+            <h4 class="style-box">Featured on Microsoft Store:</h4>
+            <p>
+                <a href="https://apps.microsoft.com/detail/9n8c43pzc1rn" target="_blank"><img src="ms-store.svg" width="200px" height="60px" alt="Get it from Microsoft" /></a>
+            </p>
+        </div>
+		</div>
+	
+		<h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+            <span class="toggle-icon">▶</span>RyzenZPilot - AMD Ryzen Power Management Tool</h3>
+        <div class="feature-detail-content" style="display:none;" id="ryzenzpilot-intro">
+
+            <p>RyzenZPilot is a powerful tool for managing AMD Ryzen processor power settings on Windows.
+            It allows users to adjust CPU performance, power limits, and thermal configurations
+            for optimal performance and efficiency.</p>
+
+
+			<div class="cta-box feature-detail-group">
+	
+            <h4 class="style-box">Website</h4>
+            <figure class="product-fig">
+                <a href="http://tetramatrix.github.io/RyzenZPilot" target="_blank">
+                    <img src="RyzenZPilot_3.1.3.png" title="AMD Ryzen Power Management Tool" alt="RyzenZPilot" />
+                </a>
+            </figure>
+        </div>
+			</div>
+			
+		<h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+            <span class="toggle-icon">▶</span>Aicono - AI Intelligent Desktop Icon Autopilot</h3>
+    
+        <div class="feature-detail-content" style="display:none;" id="aicono-intro">
+            
+            <p>Aicono automatically organizes your cluttered Windows desktop using AI. Group icons intelligently, arrange them neatly!</p>
+
+<div class="cta-box feature-detail-group">
+            <h4 class="style-box">Website</h4>
+            <figure class="product-fig">
+                <a href="http://tetramatrix.github.io/Aicono" target="_blank">
+                    <img src="Aicono.png" title="AI Intelligent Desktop Icon Autopilot" alt="Aicono" />
+                </a>
+            </figure>
+
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+            <span class="toggle-icon">▶</span>Featured on Microsoft Store</h3>
+            <div class="feature-detail-content" style="display:none;">
+            <figure class="store-fig">
+                <a href="https://apps.microsoft.com/store/detail/9NGFC27J1VBX" target="_blank">
+                    <img src="ms-store.svg" width="50%" height="50%" alt="Get it from Microsoft" />
+                </a>
+            </figure>
+						</div>
+
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+            <span class="toggle-icon">▶</span>Featured on Softpedia</h3>
+            <div class="feature-detail-content" style="display:none;">
+            <figure class="store-fig">
+                <a href="https://www.softpedia.com/get/Desktop-Enhancements/Other-Desktop-Enhancements/Aicono.shtml" target="_blank">
+                    <img src="softpedia.png" width="40%" height="40%" alt="Get it from Softpedia" />
+                </a>
+            </figure>
+						</div>
+            
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+            <span class="toggle-icon">▶</span>Featured on AlternativeTo</h3>
+            <div class="feature-detail-content" style="display:none;">
+            <figure class="store-fig">
+                <a href="https://alternativeto.net/software/aicono" title="Aicono automatically organizes your cluttered Windows desktop using AI. Group icons intelligently, arrange them neatly!" target="_blank">
+                    <img src="AlternativeTo.png" width="20%" alt="Aicono - AI Intelligent Desktop Icon Autopilot" />
+                </a>
+            </figure>
+						</div>
+						
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+            <span class="toggle-icon">▶</span>Featured on Product Hunt</h3>
+            <div class="feature-detail-content" style="display:none;">
+            <figure class="store-fig">
+                <a href="https://www.producthunt.com/products/aicono?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-aicono" target="_blank">
+                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1018479&theme=dark&t=1758526753475" alt="Aicono - The AI intelligent desktop icon autopilot for Windows | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+                </a>
+            </figure>
+            </div>
+        </div>
+</div>
+    </section>
+    </section>
+
+
+        <div class="cta-box">
+            <p style="text-align:center; color:#888;"><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:#888; text-decoration:none;">↑ Back to Top</a></p>
+            <p style="text-align:center; color:#666; font-size: 0.75em; margin-top: 5px;">A free community build is available. Session duration is capped at 30 minutes with cooldown periods between uses.</p>
+        </div>
+
+     <script>
+         function toggleFeatureDetail(element) {
+             const icon = element.querySelector('.toggle-icon');
+             
+             // Pattern 1: h3 has a .feature-detail-content as its next element sibling
+             let next = element.nextElementSibling;
+             while (next && (!next.classList || !next.classList.contains('feature-detail-content'))) {
+                 next = next.nextElementSibling;
+             }
+             if (next) {
+                 if (next.style.display === 'none' || next.style.display === '') {
+                     next.style.display = 'block';
+                     icon.textContent = '▼';
+                     element.classList.add('active');
+                 } else {
+                     next.style.display = 'none';
+                     icon.textContent = '▶';
+                     element.classList.remove('active');
+                 }
+                 return;
+             }
+             
+             // Pattern 2: h3 is inside a .cta-box with a .feature-detail-content child
+             const ctaBox = element.closest('.cta-box');
+             if (ctaBox) {
+                 const content = ctaBox.querySelector(':scope > .feature-detail-content');
+                 if (content) {
+                     if (content.style.display === 'none' || content.style.display === '') {
+                         content.style.display = 'block';
+                         icon.textContent = '▼';
+                         element.classList.add('active');
+                     } else {
+                         content.style.display = 'none';
+                         icon.textContent = '▶';
+                         element.classList.remove('active');
+                     }
+                     return;
+                 }
+             }
+             
+             // Pattern 3: h3 is outside, toggle the next <section> sibling
+             next = element.nextElementSibling;
+             while (next && next.tagName !== 'SECTION') {
+                 next = next.nextElementSibling;
+             }
+             if (next) {
+                 if (next.style.display === 'none' || next.style.display === '') {
+                     next.style.display = 'block';
+                     icon.textContent = '▼';
+                     element.classList.add('active');
+                 } else {
+                     next.style.display = 'none';
+                     icon.textContent = '▶';
+                     element.classList.remove('active');
+                 }
+             }
+         }
+
+         function toggleSectionFromArrow(arrow) {
+             const ctaBox = arrow.closest('.cta-box');
+             if (!ctaBox) return;
+             
+             // Try Pattern 1: feature-detail-content as direct child
+             const content = ctaBox.querySelector(':scope > .feature-detail-content');
+             if (content) {
+                 const navArrows = ctaBox.querySelectorAll('.nav-arrow-down, .nav-arrow-up');
+                 if (content.style.display === 'none' || content.style.display === '') {
+                     content.style.display = 'block';
+                     navArrows.forEach(a => a.textContent = '▼');
+                 } else {
+                     content.style.display = 'none';
+                     navArrows.forEach(a => a.textContent = '▶');
+                 }
+                 return;
+             }
+             
+             // Try Pattern 2: cta-box inside a section, toggle the section
+             const section = ctaBox.closest('section');
+             if (section) {
+                 const icon = section.querySelector('.feature-detail-toggle .toggle-icon') || section.querySelector('.h2-icon');
+                 if (section.style.display === 'none' || section.style.display === '') {
+                     section.style.display = 'block';
+                     if (icon) {
+                         icon.textContent = '▼';
+                         const h2 = icon.closest('.collapsible');
+                         if (h2) h2.classList.add('active');
+                     }
+                 } else {
+                     section.style.display = 'none';
+                     if (icon) {
+                         icon.textContent = '▶';
+                         const h2 = icon.closest('.collapsible');
+                         if (h2) h2.classList.remove('active');
+                     }
+                 }
+             }
+         }
+
+         function toggleSectionFromH2(h2) {
+             const icon = h2.querySelector('.h2-icon');
+             let next = h2.nextElementSibling;
+             while (next && next.tagName !== 'SECTION') {
+                 next = next.nextElementSibling;
+             }
+             if (next) {
+                 if (next.style.display === 'none' || next.style.display === '') {
+                     next.style.display = 'block';
+                     icon.textContent = '▼';
+                 } else {
+                     next.style.display = 'none';
+                     icon.textContent = '▶';
+                 }
+             }
+         }
+     </script>
+</body>
+</html>
