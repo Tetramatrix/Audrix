@@ -49,7 +49,7 @@
             Runs entirely offline on Windows.
           </p>
           <div class="hero-actions">
-            <a href="https://github.com/Tetramatrix/Audrix/releases/download/1.0.0/Audrix.exe" class="btn-primary">Get Audrix</a>
+            <a href="https://github.com/Tetramatrix/Audrix/releases/latest/Audrix.exe" class="btn-primary">Get Audrix</a>
             <a href="#why-audrix-h2" class="btn-outline">See all features ↓</a>
           </div>
           <div class="hero-stats">
@@ -174,7 +174,7 @@
                         <p><strong>How Audrix fixes it:</strong> Audrix captures from both microphone and system audio. Transcribe your voice, any app's audio, or both simultaneously with dual-stream mode.</p>
                         <ul>
                             <li><strong>Microphone capture:</strong> Standard voice input with configurable device selection</li>
-                            <li><strong>System audio capture:</strong> Record any audio playing through your system</li>
+                            <li><strong>System audio capture:</strong> Record any audio playing through your system using standard virtual routing (like VB-Audio Cable)</li>
                             <li><strong>Dual-stream mode:</strong> Capture mic and system audio simultaneously, with separate speaker labels</li>
                             <li><strong>Device selection:</strong> Choose specific input devices by system ID</li>
                         </ul>
@@ -351,6 +351,39 @@
                 </div>
             </div>
 
+            <!-- Virtual Cable Routing Guide -->
+            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
+                <span class="toggle-icon">▶</span> 🌐 Setting Up System Audio (VB-Audio Cable Routing)
+            </h3>
+            <div class="feature-detail-content" style="display:none;">
+                <div class="cta-box">
+                    <p>To correctly capture system audio without losing your loudspeaker output, Windows must be configured to pass the virtual stream back to your hardware. This requires <a href="https://vb-audio.com/Cable/" target="_blank"><strong>VB-Audio Virtual Cable</strong></a>, a free virtual audio driver from VB-Audio.</p>
+                    
+                    <h4 style="margin-top: 15px; color: #fff;">1. Install VB-Audio Virtual Cable:</h4>
+                    <ol style="margin-left: 20px; line-height: 1.7;">
+                        <li>Download <a href="https://vb-audio.com/Cable/" target="_blank"><strong>VB-Audio Virtual Cable</strong></a> from the official VB-Audio website.</li>
+                        <li>Install the driver and reboot if prompted.</li>
+                    </ol>
+                    
+                    <h4 style="margin-top: 15px; color: #fff;">2. Configure Windows Sound Routing:</h4>
+                    <ol style="margin-left: 20px; line-height: 1.7;">
+                        <li>Open the Windows <strong>System Control (Control Panel)</strong> and open the <strong>Sound</strong> settings.</li>
+                        <li>Switch to the <strong>Recording</strong> tab.</li>
+                        <li>Select <strong>CABLE Output</strong> and open its <strong>Properties</strong>.</li>
+                        <li>Navigate to the <strong>Listen</strong> tab.</li>
+                        <li>Check the box for <strong>"Listen to this device"</strong>.</li>
+                        <li>In the dropdown menu, select your physical <strong>Loudspeaker</strong>. <em>(This hooks the cable output directly to your speakers so you can hear everything normally while the cable grabs the sound).</em></li>
+                    </ol>
+                    
+                    <h4 style="margin-top: 15px; color: #fff;">3. Configure Audrix:</h4>
+                    <p>In the Audrix device selection, simply select <strong>Cable Input (VB-Audio Virtual Cable)</strong> to grab and transcribe the system audio stream.</p>
+                    
+                    <blockquote style="margin-top: 15px; padding: 12px; background: #1a1a1a; border-left: 3px solid #00ff00; font-size: 0.9em; color: #ccc;">
+                        🎯 <strong>Result:</strong> System audio flows straight into the virtual cable for Audrix to grab, while simultaneously passing through to your loudspeakers so you don't miss a beat.
+                    </blockquote>
+                </div>
+            </div>
+
             <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
                 <span class="toggle-icon">▶</span> Configuration Options
             </h3>
@@ -377,7 +410,7 @@
             <p><strong>Your audio deserves a transcription engine that actually works for it.</strong> Download Audrix today. Runs fully offline, no cloud. Build a personal speech-to-text workspace that gets smarter every time you use it.</p>
 
             <div class="download-buttons">
-                <a href="https://github.com/Tetramatrix/Audrix/releases/download/1.0.0/Audrix.exe" class="btn-partner">Download</a>
+                <a href="https://github.com/Tetramatrix/Audrix/releases/latest/Audrix.exe" class="btn-partner">Download</a>
             </div>
 
             <p style="font-size: 0.9em; color: #888; margin-top: 15px;">No installation required for portable version. Your data stays on your machine.</p>
