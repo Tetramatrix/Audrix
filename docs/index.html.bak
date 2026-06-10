@@ -44,7 +44,7 @@
           </div>
           <h1>Real-time intelligence.<br><em>No cloud required.</em></h1>
           <p class="hero-sub">
-          	Audrix is a real-time local intelligence engine that captures audio and transcribes it instantly, while also giving you local OCR and Vision to read and analyze any section of your screen. Built for low-latency transcription with configurable noise suppression, automatic crosstalk detection, and support for multiple providers. Everything runs locally, your audio and screen data never leave your machine.
+          	Audrix is a real-time local intelligence engine that captures audio and transcribes it instantly, while also giving you local OCR and Vision to read and analyze any section of your screen. Built for low-latency transcription with configurable noise suppression, automatic crosstalk detection to separate speakers, and support for multiple inference backends. Everything runs locally, your audio and screen data never leave your machine.
           </p>
           <div class="hero-actions">
             <a href="https://github.com/Tetramatrix/Audrix/releases/latest/Audrix.exe" class="btn-primary">Get Audrix</a>
