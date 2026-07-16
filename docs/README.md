@@ -17,6 +17,7 @@ Audrix listens to what's playing on your PC and turns it into text in real time,
 ## Getting started
 
 Download the latest release from GitHub and run `Audrix_Community.exe`.
+Version 1.0.2
 
 No installation, no dependencies, no account required.
 
