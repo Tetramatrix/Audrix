@@ -32,5 +32,3 @@
 🧹 Diagnostic and import logs downgraded from INFO to DEBUG.
 🧹 Default `mic_gain_db` changed from 5.0 to 10.0.
 🧹 Start/Stop banner logging added for easier debugging.
-🐛 About window — version string updated to 1.0.2.
-🔄 Version bumped to 1.0.2 — all build files, resource files, and VERSION.txt updated.
