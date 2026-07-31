@@ -1,753 +1,2341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <title>Audrix - Real-Time Local Intelligence Engine</title>
-    <meta name="description" content="Audrix is a real-time local intelligence engine for Windows that transforms live audio and on-screen visuals into immediate, actionable insights. Capture microphone or system audio for crisp speech-to-text, or instantly read and analyze any section of your screen with local OCR and Vision. Every model executes entirely offline, your data never touches the cloud.">
-    <meta name="keywords" content="speech to text, real-time transcription, offline STT, local transcription, windows audio capture, system audio, noise suppression, crosstalk detection, local OCR, screen vision, on-screen analysis, real-time OCR, local intelligence, offline vision, screen reading, visual analysis">
-    <meta name="author" content="Tetramatrix">
-    <meta property="og:title" content="Audrix - Real-Time Local Intelligence Engine">
-    <meta property="og:description" content="Real-time local intelligence on Windows. Speech-to-text with noise suppression, plus local OCR and Vision for screen analysis. 100% offline.">
-    <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<noscript><meta http-equiv="refresh" content="0; URL=https://tetramatrix.github.io/Audrix/"></noscript>
+<script>
+(function(){
+  var stored=localStorage.getItem('theme');
+  if(stored){document.documentElement.setAttribute('data-theme',stored);}
+  else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){
+    document.documentElement.setAttribute('data-theme','light');
+  }
+})();
+</script>
 
-        <!-- Google Ads (using template IDs) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6449563648591184"
-         crossorigin="anonymous"></script>
-         
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<!-- Google Ads -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6449563648591184"
+     crossorigin="anonymous"></script>
+
+<title>Audrix - Real-Time Local Intelligence Engine</title>
+<meta name="description" content="Audrix is a real-time local intelligence engine for Windows. Capture microphone or system audio for speech-to-text, or read and analyze any screen region with local OCR and Vision. 100% offline.">
+<meta property="og:title" content="Audrix - Real-Time Local Intelligence Engine">
+<meta property="og:description" content="Real-time local intelligence on Windows. Speech-to-text with noise suppression, plus local OCR and Vision for screen analysis. 100% offline.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tetramatrix.github.io/Audrix/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Audrix - Real-Time Local Intelligence Engine">
+<meta name="twitter:description" content="Real-time local intelligence on Windows. Speech-to-text with noise suppression, plus local OCR and Vision for screen analysis. 100% offline.">
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="canonical" href="https://tetramatrix.github.io/Audrix/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0f14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Audrix",
+  "operatingSystem": "Windows 10/11",
+  "applicationCategory": "SpeechRecognition, OCR, AudioCapture",
+  "offers": { "@type": "Offer", "price": "0" },
+  "screenshot": ["Audrix_Main.png", "Audrix_Settings.png", "Audrix_Models.png"],
+  "url": "https://tetramatrix.github.io/Audrix/",
+  "downloadUrl": "https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe",
+  "softwareVersion": "1.0.2",
+  "author": { "@type": "Organization", "name": "Tetramatrix" },
+  "sameAs": [
+    "https://github.com/Tetramatrix/Audrix",
+    "https://www.softpedia.com/get/Office-tools/Audrix.shtml",
+    "https://alternativeto.net/software/audrix"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Audrix cost anything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Audrix is free to download and use. A free community build is available with a 30-minute session cap. Studio and Enterprise editions are available for extended use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my data leave my machine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All processing happens locally on your machine. Your audio and screen data never touch the cloud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run it from a USB stick?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Audrix is a portable executable. Extract it anywhere and run it. No installation, no registry changes, no admin rights required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What transcription backends are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Audrix supports Whisper, Lemonade (AMD Ryzen NPU acceleration via FastFlowLM), and any external WebSocket or HTTP transcription endpoint. Backends are hot-swappable at runtime."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it support system audio capture?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Audrix captures microphone, system audio (loopback), or both simultaneously. Dual-stream mode distinguishes the local user from remote speakers on calls."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+/* Art direction: Real-time local intelligence → precise, technical, electric
+   Palette: deep dark surfaces, cyan accent, restrained color
+   Typography: Instrument Serif display + Inter body */
+
+:root, [data-theme="dark"] {
+  --color-bg:             #0b0f14;
+  --color-surface:        #111820;
+  --color-surface-2:      #19222d;
+  --color-surface-3:      #202a37;
+  --color-border:         rgba(255,255,255,0.08);
+  --color-text:           #e8eaed;
+  --color-text-muted:     #8a8f98;
+  --color-text-faint:     #4a4f58;
+  --color-primary:        #06b6d4;
+  --color-primary-hover:  #22d3ee;
+  --color-primary-dim:    rgba(6,182,212,0.12);
+  --color-primary-glow:   rgba(6,182,212,0.06);
+  --color-free:           #4ade80;
+  --color-free-dim:       rgba(74,222,128,0.12);
+  --color-cloud:          #60a5fa;
+  --color-cloud-dim:      rgba(96,165,250,0.12);
+  --color-local:          #f59e0b;
+  --color-local-dim:      rgba(245,158,11,0.12);
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-hero: clamp(2.5rem, 1rem + 5vw, 5rem);
+
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+
+  --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem;
+  --radius-xl: 1rem; --radius-2xl: 1.5rem; --radius-full: 9999px;
+}
+
+[data-theme="light"] {
+  --color-bg:             #f6f9fb;
+  --color-surface:        #ffffff;
+  --color-surface-2:      #f3f4f6;
+  --color-surface-3:      #e5e7eb;
+  --color-border:         rgba(0,0,0,0.08);
+  --color-text:           #111827;
+  --color-text-muted:     #6b7280;
+  --color-text-faint:     #9ca3af;
+  --color-primary:        #0891b2;
+  --color-primary-hover:  #0e7490;
+  --color-primary-dim:    rgba(8,145,178,0.1);
+  --color-primary-glow:   rgba(8,145,178,0.05);
+  --color-free:           #16a34a;
+  --color-free-dim:       rgba(22,163,74,0.1);
+  --color-cloud:          #2563eb;
+  --color-cloud-dim:      rgba(37,99,235,0.1);
+  --color-local:          #d97706;
+  --color-local-dim:      rgba(217,119,6,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+section[id] { scroll-margin-top: 84px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero::before { animation: none; }
+  .badge-dot { animation: none; }
+  .reveal { transition: none; opacity: 1; transform: none; }
+  .screenshot-card, .screenshot-card img, .discover-card { transition: none; }
+}
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-bottom: 240px;
+}
+img { display: block; max-width: 100%; height: auto; }
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--space-2) var(--space-4);
+  z-index: 100;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-md);
+}
+.skip-link:focus { top: var(--space-2); left: var(--space-2); }
+ul { list-style: none; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-hover); }
+
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--color-bg) 90%, transparent);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 200ms ease;
+}
+nav.scrolled {
+  box-shadow: 0 1px 24px rgba(0,0,0,0.25);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  text-decoration: none;
+}
+.nav-links { display: flex; align-items: center; gap: var(--space-6); }
+.nav-links a {
+  color: var(--color-text-muted); text-decoration: none;
+  font-size: var(--text-sm); transition: color 160ms ease;
+}
+.nav-links a:hover { color: var(--color-text); }
+.nav-links a.active { color: var(--color-text); font-weight: 500; }
+.btn-primary {
+  background: var(--color-primary);
+  color: #0a1a17;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  border: none; cursor: pointer;
+  text-decoration: none;
+  transition: background 160ms ease, transform 120ms ease;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); color: #0a1a17; }
+.btn-outline {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--color-primary); background: var(--color-primary-dim); }
+#toggleFeatures {
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.06);
+  color: var(--color-text);
+}
+#toggleFeatures:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-dim);
+  color: var(--color-primary);
+}
+.btn-store {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 120ms ease;
+}
+.btn-store:hover { transform: translateY(-1px); }
+.btn-store img { height: 40px; width: auto; display: block; }
+
+/* HERO */
+.hero {
+  padding: clamp(var(--space-16), 10vw, var(--space-24)) var(--space-8);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  background: var(--color-primary-dim);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-6);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--color-primary);
+}
+.hero-sub {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: 680px;
+  margin: 0 auto var(--space-10);
+  line-height: 1.65;
+}
+.hero-actions {
+  display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+.hero-badge {
+  display: flex; justify-content: center;
+  margin-bottom: var(--space-12);
+}
+.hero-badge .badge {
+  font-size: var(--text-sm);
+  padding: var(--space-2) var(--space-4);
+}
+.hero-stats {
+  display: flex; gap: var(--space-8); justify-content: center; flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+  min-width: 120px;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  display: block;
+  line-height: 1;
+}
+.stat-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* HERO ORB */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 70%;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(6,182,212,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(34,211,238,0.08) 0%, transparent 60%);
+  filter: blur(40px);
+  animation: hero-orb 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > * { position: relative; z-index: 1; }
+@keyframes hero-orb {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-3%, 4%) scale(1.06); }
+}
+
+/* SECTION REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* BADGE PULSE */
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.25); }
+}
+.badge-dot { animation: badge-pulse 2.4s ease-in-out infinite; }
+
+/* SCREENSHOT HOVER */
+.screenshot-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.screenshot-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+}
+.screenshot-card img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+  transition: transform 300ms ease;
+}
+.screenshot-card:hover img {
+  transform: scale(1.04);
+}
+
+/* SCREENSHOT SHOWCASE */
+.showcase {
+  padding: 0 var(--space-8) var(--space-20);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.screenshot-wrap {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 0 0 1px rgba(6,182,212,0.08),
+    0 24px 80px rgba(0,0,0,0.6),
+    0 0 120px rgba(6,182,212,0.04);
+}
+.screenshot-wrap::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 70%,
+    rgba(11,15,20,0.6) 100%);
+  z-index: 1; pointer-events: none;
+  border-radius: var(--radius-2xl);
+}
+.screenshot-wrap img {
+  width: 100%; display: block;
+  border-radius: var(--radius-2xl);
+}
+.screenshot-caption {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* FREE BADGE FLOATING */
+.floating-badges {
+  display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+}
+.badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border: 1px solid;
+}
+.badge.free { color: var(--color-free); background: var(--color-free-dim); border-color: rgba(74,222,128,0.25); }
+.badge.cloud { color: var(--color-cloud); background: var(--color-cloud-dim); border-color: rgba(96,165,250,0.25); }
+.badge.local { color: var(--color-local); background: var(--color-local-dim); border-color: rgba(245,158,11,0.25); }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* FAQ ACCORDION */
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+}
+.faq-item summary {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-size: var(--text-lg);
+  font-weight: 300;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-left: var(--space-3);
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+/* PRICING */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: var(--space-6);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.pricing-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: flex-start;
+  transition: border-color 200ms, box-shadow 200ms;
+}
+.pricing-card:hover {
+  border-color: rgba(6,182,212,0.18);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+.pricing-card--accent {
+  border-color: rgba(6,182,212,0.35);
+  background: linear-gradient(180deg, rgba(6,182,212,0.06), transparent);
+}
+.pricing-card--accent:hover {
+  border-color: rgba(6,182,212,0.5);
+  box-shadow: 0 12px 40px rgba(6,182,212,0.1);
+}
+.pricing-icon {
+  width: 44px; height: 44px; border-radius: var(--radius-lg);
+  background: var(--color-primary-dim);
+  color: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-3);
+  border: 1px solid rgba(6,182,212,0.2);
+}
+.pricing-icon svg { width: 20px; height: 20px; }
+.pricing-name { font-size: var(--text-base); font-weight: 600; color: var(--color-text); margin: 0; }
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  line-height: 1;
+}
+.pricing-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.pricing-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  margin: 0 0 var(--space-2);
+}
+.pricing-cta {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+/* SECTION BASE */
+.section {
+  padding: var(--space-20) var(--space-8);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-alt {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.section-header {
+  max-width: 640px;
+  margin: 0 auto var(--space-12);
+  text-align: center;
+}
+.section-header h2,
+.section-header .h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: var(--space-4);
+}
+.section-header h2 em,
+.section-header .h2 em {
+  font-style: italic;
+  color: var(--color-primary);
+}
+.section-header p {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.65;
+}
+
+/* HOW IT WORKS STEPS */
+.steps {
+  display: flex;
+  gap: var(--space-6);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-8);
+}
+.step {
+  flex: 1;
+  min-width: 180px;
+  max-width: 280px;
+  text-align: center;
+}
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary-dim);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+  border: 1px solid rgba(6,182,212,0.2);
+}
+.logo-light-bg {
+  background: rgba(255,255,255,0.95);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+}
+[data-theme="light"] .logo-light-bg {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+}
+.step h3 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+.step p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.step-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-faint);
+  font-size: var(--text-lg);
+}
+@media (max-width: 768px) {
+  .step-arrow { display: none; }
+  .steps { gap: var(--space-8); }
+}
+
+/* TESTIMONIALS */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px,100%), 1fr));
+  gap: var(--space-4);
+}
+.testimonial-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: border-color 200ms, box-shadow 200ms;
+}
+.testimonial-card:hover {
+  border-color: rgba(6,182,212,0.2);
+  box-shadow: 0 8px 32px rgba(6,182,212,0.04);
+}
+.testimonial-logo {
+  max-width: 140px;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+  margin-bottom: var(--space-4);
+}
+.testimonial-logo.has-bg {
+  background: rgba(255, 255, 255, 0.95);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+}
+.testimonial-source {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+.testimonial-quote {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.65;
+  margin-bottom: var(--space-4);
+}
+.testimonial-link {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* OVERVIEW / ABOUT */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .overview-grid { grid-template-columns: 1fr 1fr; }
+}
+.overview-text p {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.75;
+  margin-bottom: var(--space-4);
+}
+.overview-text strong {
+  color: var(--color-text);
+}
+.overview-video {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+}
+.overview-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.overview-video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+}
+
+/* PROBLEM / SOLUTION CARDS */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr));
+  gap: var(--space-4);
+}
+.problem-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: border-color 200ms, box-shadow 200ms;
+}
+.problem-card:hover {
+  border-color: rgba(6,182,212,0.2);
+  box-shadow: 0 8px 32px rgba(6,182,212,0.04);
+}
+.problem-card h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+  line-height: 1.35;
+}
+.problem-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--space-3);
+}
+.problem-card ul {
+  list-style: disc;
+  padding-left: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+.problem-card li {
+  margin-bottom: var(--space-2);
+  line-height: 1.5;
+}
+
+/* COMPARISON */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  font-size: var(--text-sm);
+}
+.comparison-table th,
+.comparison-table td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+.comparison-table th {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  font-weight: 600;
+}
+.comparison-table td {
+  color: var(--color-text-muted);
+}
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table td:first-child { color: var(--color-text); font-weight: 500; }
+.comparison-table .win { color: var(--color-free); }
+
+/* FEATURES */
+.features-header { text-align: left; }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr));
+  gap: var(--space-4);
+}
+.feature-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: border-color 200ms, box-shadow 200ms;
+}
+.feature-card:hover {
+  border-color: rgba(6,182,212,0.2);
+  box-shadow: 0 8px 32px rgba(6,182,212,0.04);
+}
+.feature-card.large { grid-column: span 2; }
+.feature-icon {
+  width: 36px; height: 36px;
+  background: var(--color-primary-dim);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--space-4);
+  color: var(--color-primary);
+}
+.feature-icon svg { width: 18px; height: 18px; }
+.feature-card h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+.feature-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* EXAMPLES */
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px,100%), 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+.example-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  transition: border-color 200ms, box-shadow 200ms;
+}
+.example-card:hover {
+  border-color: rgba(6,182,212,0.2);
+  box-shadow: 0 8px 32px rgba(6,182,212,0.04);
+}
+.example-card h4 {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+.example-card ul {
+  list-style: none;
+  padding: 0;
+}
+.example-card li {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-border);
+  transition: border-color 160ms;
+}
+.example-card li:hover {
+  border-left-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+/* SCREENSHOT STRIP */
+.screenshot-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px,100%), 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-12);
+}
+.screenshot-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.screenshot-card img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+}
+.screenshot-card figcaption {
+  padding: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* DISCOVER / OTHER APPS */
+.discover-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr));
+  gap: var(--space-4);
+}
+.discover-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: border-color 200ms, box-shadow 200ms;
+  display: flex;
+  flex-direction: column;
+}
+.discover-card:hover {
+  border-color: rgba(6,182,212,0.2);
+  box-shadow: 0 8px 32px rgba(6,182,212,0.04);
+  transform: translateY(-2px);
+}
+.discover-card img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+}
+.discover-card-body {
+  padding: var(--space-5);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.discover-card h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+.discover-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  flex: 1;
+}
+.discover-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.discover-links a {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+  transition: background 160ms, border-color 160ms;
+}
+.discover-links a:hover {
+  background: var(--color-primary-dim);
+  border-color: var(--color-primary);
+}
+
+/* PROVIDERS */
+.providers-section {
+  padding: var(--space-16) var(--space-8);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+.section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-8);
+}
+.providers-grid {
+  display: flex; flex-wrap: wrap; gap: var(--space-3);
+  justify-content: center;
+  max-width: 800px; margin: 0 auto;
+}
+.provider-chip {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: border-color 160ms, color 160ms, background 160ms;
+}
+.provider-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text);
+  background: var(--color-primary-dim);
+}
+.provider-chip .icon { width: 16px; height: 16px; object-fit: contain; }
+.providers-sub-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+.providers-sub-label + .providers-grid { margin-bottom: var(--space-8); }
+.providers-grid + .providers-sub-label { margin-top: var(--space-10); }
+
+/* FREE MODEL COUNTER */
+.free-highlight {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-free-dim);
+  border: 1px solid rgba(74,222,128,0.2);
+  border-radius: var(--radius-lg);
+  display: flex; align-items: center; gap: var(--space-3);
+}
+.free-highlight-num {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-free);
+  line-height: 1;
+}
+.free-highlight-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* MODEL TABLE PREVIEW */
+.model-preview {
+  padding: var(--space-20) var(--space-8);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.model-preview-inner {
+  max-width: 900px; margin: 0 auto;
+}
+.model-preview h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  margin-bottom: var(--space-8);
+}
+.model-rows {
+  display: flex; flex-direction: column; gap: var(--space-2);
+}
+.model-row {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color 160ms;
+}
+.model-row:hover { border-color: rgba(6,182,212,0.2); }
+.model-provider {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  width: 130px; flex-shrink: 0;
+}
+.model-name {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  flex: 1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+  font-size: 0.8rem;
+}
+.model-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  flex: 2;
+  display: none;
+}
+@media (min-width: 640px) { .model-desc { display: block; } }
+.model-tag {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+.model-tag.free { color: var(--color-free); background: var(--color-free-dim); }
+.model-tag.configured { color: var(--color-local); background: var(--color-local-dim); }
+.model-tag.installed { color: var(--color-primary); background: var(--color-primary-dim); }
+
+/* SETUP / SUPPORT CARDS */
+.setup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px,100%), 1fr));
+  gap: var(--space-4);
+}
+.setup-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+}
+.setup-card h3 {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+.setup-card p,
+.setup-card li {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+.setup-card ul {
+  list-style: disc;
+  padding-left: var(--space-5);
+}
+.setup-card li { margin-bottom: var(--space-2); }
+
+/* CTA SECTION */
+.cta-section {
+  padding: clamp(var(--space-16), 10vw, var(--space-24)) var(--space-8);
+  text-align: center;
+  max-width: 700px; margin: 0 auto;
+}
+.cta-section h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: var(--space-5);
+}
+.cta-section h2 em { font-style: italic; color: var(--color-primary); }
+.cta-section p {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-8);
+}
+.cta-actions {
+  display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;
+}
+
+/* FOOTER */
+footer {
+  padding: var(--space-8);
+  border-top: 1px solid var(--color-border);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  max-width: 1100px; margin: 0 auto;
+}
+
+/* BACK TO TOP */
+#backToTop {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 60;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+#backToTop.show { opacity: 1; visibility: visible; }
+#backToTop:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  #backToTop { transition: none; }
+}
+
+/* ADSENSE INLINE ADS */
+.ad-container {
+  margin: var(--space-8) auto;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  text-align: center;
+  max-height: 520px;
+  min-height: 90px;
+}
+.ad-inline {
+  margin: var(--space-6) 0;
+  text-align: center;
+  min-height: 60px;
+}
+.feature-card.ad-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  padding: var(--space-2);
+}
+.feature-card.ad-card ins {
+  width: 100%;
+  max-width: 100%;
+}
+.ad-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  #menuToggle { display: block !important; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    padding: var(--space-4);
+    gap: var(--space-3);
+    z-index: 40;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: var(--space-2) 0; }
+  nav { position: relative; }
+  .hero { padding: var(--space-12) var(--space-5); }
+  .showcase { padding: 0 var(--space-4) var(--space-16); }
+  .section { padding: var(--space-12) var(--space-4); }
+  .feature-card.large { grid-column: span 1; }
+  .model-preview { padding: var(--space-12) var(--space-4); }
+  .providers-section { padding: var(--space-10) var(--space-4); }
+  .hero-stats { gap: var(--space-5); }
+  .comparison-table { font-size: var(--text-xs); }
+  .comparison-table th,
+  .comparison-table td { padding: var(--space-2); }
+  .comparison-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--color-surface-2);
+    z-index: 1;
+  }
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--color-surface-2);
+    z-index: 2;
+    min-width: 110px;
+  }
+  .comparison-table thead th:first-child { z-index: 3; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .hero::before {
+    inset: -10% -30% auto;
+    height: 50%;
+    filter: blur(28px);
+  }
+  .showcase .screenshot-wrap { border-radius: var(--radius-xl); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-surface-3); border-radius: 3px; }
+</style>
 </head>
-<body>
-    <div id="api-notice" style="position: fixed; top: 0; left: 0; right: 0; background: #00ff00; color: #ff00ff; text-align: center; padding: 10px; z-index: 1000; font-weight: bold;">
-        ⚡ Real-Time Local Intelligence Engine. Audio + Visual AI. Entirely Offline, No Cloud, No Limits. ⚡
+<body id="main">
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="Audrix">
+      <circle cx="14" cy="14" r="12" stroke="#06b6d4" stroke-width="1.5" fill="none"/>
+      <circle cx="14" cy="14" r="5" fill="#06b6d4" opacity="0.8"/>
+      <circle cx="14" cy="5" r="2" fill="#06b6d4"/>
+      <circle cx="21.5" cy="10" r="2" fill="#06b6d4" opacity="0.5"/>
+      <circle cx="21.5" cy="18" r="2" fill="#06b6d4" opacity="0.5"/>
+      <circle cx="14" cy="23" r="2" fill="#06b6d4" opacity="0.3"/>
+      <circle cx="6.5" cy="18" r="2" fill="#06b6d4" opacity="0.5"/>
+      <circle cx="6.5" cy="10" r="2" fill="#06b6d4" opacity="0.5"/>
+    </svg>
+    Audrix
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#features">Features</a>
+    <a href="#models">Models</a>
+    <a href="#providers">Providers</a>
+    <a href="#setup">Setup</a>
+    <a href="#discover">Discover</a>
+    <a href="support.html">Support</a>
+    <a href="https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe" class="btn-primary">Get Audrix Free</a>
+    <button id="themeToggle" aria-label="Toggle light mode" style="background:none;border:none;color:var(--color-text-muted);cursor:pointer;font-size:var(--text-lg);padding:var(--space-2);">🌙</button>
+  </div>
+  <button id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" style="display:none;background:none;border:none;color:var(--color-text);cursor:pointer;font-size:var(--text-xl);padding:var(--space-2);">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="badge-dot" style="background:var(--color-primary)"></span>
+    Real-Time Local Intelligence Engine
+  </div>
+  <h1>Real-time intelligence.<br><em>No cloud required.</em></h1>
+  <p class="hero-sub">
+    Audrix captures live audio and on-screen visuals, transcribes with noise suppression and crosstalk detection, and runs OCR and Vision locally. Offline. Private. Yours.
+  </p>
+  <div class="hero-actions">
+    <a href="https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe" class="btn-primary">Get Audrix Free</a>
+    <a href="#features" class="btn-outline">See all features ↓</a>
+  </div>
+  <div class="hero-badge">
+    <span class="badge free"><span class="badge-dot"></span> Free to use</span>
+    <span class="badge local"><span class="badge-dot"></span> 100% Offline</span>
+  </div>
+  <div class="showcase" style="padding:0;max-width:1100px;">
+    <div class="screenshot-wrap">
+      <img src="Audrix_Main.png"
+           alt="Audrix main interface showing real-time transcription and system audio capture"
+           width="1140" height="820" fetchpriority="high">
     </div>
+    <div class="floating-badges">
+      <span class="badge free"><span class="badge-dot"></span> Portable</span>
+      <span class="badge local"><span class="badge-dot"></span> Low Latency</span>
+      <span class="badge free"><span class="badge-dot"></span> Offline</span>
+      <span class="badge cloud"><span class="badge-dot"></span> Vision</span>
+    </div>
+    <p class="screenshot-caption">
+      Audrix Engine: real-time transcription from microphone or system audio, with local OCR and Vision for instant screen analysis.
+    </p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-number">🎤</span>
+      <span class="stat-label">System Audio</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">🔇</span>
+      <span class="stat-label">Noise Suppression</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">10+</span>
+      <span class="stat-label">Backends</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">100%</span>
+      <span class="stat-label">Offline</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">0ms</span>
+      <span class="stat-label">Cloud Latency</span>
+    </div>
+  </div>
+</section>
 
-    <aside class="left">
-        <nav class="fixed-nav">
-        </nav>
-    </aside>
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="section-header">
+    <h2>How it <em>works.</em></h2>
+    <p>Three steps to real-time local intelligence.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Choose a backend</h3>
+      <p>Use Whisper, Lemonade NPU acceleration, or any external transcription endpoint. Switch at runtime without reinstalling.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Capture audio</h3>
+      <p>Grab microphone, system audio, or both simultaneously. Audrix handles noise suppression and crosstalk detection automatically.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Get transcripts</h3>
+      <p>See text appear in real time. Select any screen region for OCR and Vision. Everything runs locally on your machine.</p>
+    </div>
+  </div>
+</section>
 
-    <aside class="right">
-    </aside>
+<!-- TESTIMONIALS -->
+<section class="section section-alt" id="testimonials">
+  <div class="section-header">
+    <h2>Trusted by the <em>community.</em></h2>
+    <p>Reviewed and recommended by publications across the software space.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <img src="softpedia.png" alt="Softpedia" class="testimonial-logo" loading="lazy" width="140" height="56">
+      <div class="testimonial-source">Softpedia</div>
+      <p class="testimonial-quote">"Audrix is a tool that lets you capture sound from your microphone, PC speakers or both at the same time without dealing with complicated configuration. The transcription engine is designed to reduce duplicate words and improve accuracy, even if someone is speaking continuously or multiple people speak at the same time."</p>
+      <a href="https://www.softpedia.com/get/Office-tools/Audrix.shtml" class="testimonial-link" target="_blank" rel="noopener">Read full review →</a>
+    </div>
+  </div>
+</section>
 
-    <main class="wikidoc">
-        <!-- Hero Section -->
-        <section class="hero" data-no-toggle="true">
-          <div class="hero-eyebrow">
-            <span class="badge-dot"></span>
-            Real-Time Local Intelligence Engine
-          </div>
-          <h1>Real-time intelligence.<br><em>No cloud required.</em></h1>
-          <p class="hero-sub">
-          	Audrix is a real-time local intelligence engine that captures audio and transcribes it instantly, while also giving you local OCR and Vision to read and analyze any section of your screen. Built for low-latency transcription with configurable noise suppression, automatic crosstalk detection, and support for multiple providers. Everything runs locally, your audio and screen data never leave your machine.
-          </p>
-          <div class="hero-actions">
-            <a href="https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe" class="btn-primary">Get Audrix</a>
-            <a href="#why-audrix-h2" class="btn-outline">See all features ↓</a>
-          </div>
-          <div class="hero-stats">
-              <div class="stat">
-                <span class="stat-number">🎤</span>
-                <span class="stat-label">System Audio</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">🔇</span>
-                <span class="stat-label">Noise Suppression</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">10+</span>
-                <span class="stat-label">Backends</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">100%</span>
-                <span class="stat-label">Offline</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">0ms</span>
-                <span class="stat-label">Cloud Latency</span>
-              </div>
-          </div>
-        </section>
-
-        <!-- Architecture Showcase -->
-        <section class="showcase" id="architecture-showcase" data-no-toggle="true">
-          <div class="screenshot-wrap">
-             <div style="padding: 40px; text-align: center; color: #cccccc;">
-               <p style="font-size: 1.2em; margin-bottom: 20px;">
-                 <strong>Audio Input</strong> → Capture Engine → <strong>Audrix Engine</strong> → <strong>Transcription Model</strong> → Real-Time Transcript | Screen Region → OCR/Vision Engine → Instant Text &amp; Analysis
-               </p>
-               <p style="font-size: 0.9em; color: #888;">
-                 High-performance audio capture with on-screen visual analysis
-               </p>
-             </div>
-          </div>
-          <div class="floating-badges">
-            <span class="badge free"><span class="badge-dot"></span> PORTABLE</span>
-            <span class="badge cloud"><span class="badge-dot"></span> LOW LATENCY</span>
-            <span class="badge local"><span class="badge-dot"></span> OFFLINE</span>
-            <span class="badge cloud"><span class="badge-dot"></span> VISION</span>
-          </div>
-          <p class="screenshot-caption">
-            Raw PCM audio from capture engine → real-time transcription → instant results. No buffering, no waiting. Plus on-screen visual capture and analysis.
-          </p>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials-section" id="testimonials" data-no-toggle="true">
-          <h2 class="testimonials-heading" data-no-toggle="true">Trusted by the Community</h2>
-          <div class="testimonials-grid">
-            <div class="testimonial-card">
-              <img src="https://cdnssl.softpedia.com/_img/softpedia_logo.png" alt="Softpedia" class="testimonial-logo">
-              <div class="testimonial-source">Softpedia</div>
-              <p class="testimonial-quote">"Audrix is a tool that lets you capture sound from your microphone, PC speakers or both at the same time without dealing with complicated configuration. The transcription engine is designed to reduce duplicate words and improve accuracy, even if someone is speaking continuously or multiple people speak at the same time."</p>
-              <a href="https://www.softpedia.com/get/Office-tools/Audrix.shtml" class="testimonial-link" target="_blank" rel="noopener">Read full review →</a>
-            </div>
-          </div>
-        </section>
-
-        <!-- Horizontal Navigation Bar -->
-        <nav class="horizontal-toc-nav">
-            <ul>
-                <li><a href="#overview-h2">Overview</a></li>
-                <li><a href="#why-audrix-h2">Why Audrix</a></li>
-                <li><a href="#core-features-h2">Core Features</a></li>
-                <li><a href="#backends-h2">Backends</a></li>
-                <li><a href="#audio-h2">Audio Capture</a></li>
-                <li><a href="#vision-h2">Vision &amp; OCR</a></li>
-                <li><a href="#setup-h2">Setup</a></li>
-            </ul>
-        </nav>
-
-    <!-- Overview Section -->
-     <h2 id="overview-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-          <span class="h2-icon">▶</span> Overview - Your Audio and Screen, Analyzed Instantly
-     </h2>
-    <section class="overview-section" id="overview" style="display:none;">
-    <section class="inspiration-section" id="inspiration">
-        <div class="cta-box">
-            
-            <p>We needed real-time speech-to-text that respects privacy and runs locally. Existing solutions were either cloud-dependent, too slow, or could not capture system audio. So we built Audrix: a high-performance STT engine, now with built-in OCR and Vision to read and analyze anything on your screen.</p>
-        </div>
-    </section>
-
-        <h3 id="what-is-audrix-h2">About Audrix</h3>
-        <section class="intro-section" id="what-is-audrix">
-            <div class="cta-box">
-		            Audrix is a real-time local intelligence engine for Windows that transforms live audio and on-screen visuals into immediate, actionable insights. Capture microphone or system output for crisp speech-to-text with advanced noise suppression and crosstalk detection, while simultaneously running live AI analysis on the audio stream as it happens. Pair this with local OCR and Vision capabilities to instantly read and analyze any section of your screen. Built for speed and absolute privacy, every model executes entirely offline, your conversations, text, and screen data never touch the cloud.
-            </div>
-        </section>
-    </section>
-
-      <h2 id="why-audrix-h2" onclick="toggleSectionFromH2(this)">💡 Why Audrix? Because Local STT Shouldn't Be Hard!</h2>
-    <section class="why-audrix-section" id="why-audrix" style="display:none;">
-        <section class="feature-details-section" id="feature-details">
-
-            <!-- Privacy -->
-            <div class="cta-box feature-detail-group">
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> 🔒 Your Audio and Screen Never Leave Your Machine
-                </h3>
-            <div class="feature-detail-content" style="display:none;">
-                <div class="cta-box">
-                    <ul>
-                            <li><strong>100% local:</strong> All processing on your machine, zero external calls</li>
-                            <li><strong>No internet required:</strong> Works completely offline after initial setup</li>
-                            <li><strong>Data sovereignty:</strong> Your transcripts stay yours, stored locally wherever you choose</li>
-                            <li><strong>Screen privacy:</strong> OCR and Vision analysis runs entirely offline, no screen data escapes</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> ⚡ Real-Time Performance, Not Batch Jobs
-                </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <p><strong>The problem:</strong> Traditional STT tools require you to record first, then process later. You lose the ability to react, search, or act on spoken content while it is happening.</p>
-                        <p><strong>How Audrix fixes it:</strong> Audrix transcribes audio in real-time as it is captured. See text appear the moment words are spoken, perfect for live captions, meeting notes, or voice commands.</p>
-                        <ul>
-                            <li><strong>Low-latency pipeline:</strong> Audio captured and processed immediately</li>
-                            <li><strong>Configurable chunking:</strong> Adjustable commit intervals and buffer sizes for your hardware</li>
-                            <li><strong>Partial results:</strong> Get interim transcripts before finalization for faster feedback</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> 🎤 Mic + System Audio (Loopback) Capture
-                </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <p><strong>The problem:</strong> Most STT tools only capture microphone input. You cannot transcribe YouTube videos, meetings from Zoom/Teams, or any audio playing through your speakers.</p>
-                        <p><strong>How Audrix fixes it:</strong> Audrix captures from both microphone and system audio. Transcribe your voice, any app's audio, or both simultaneously with dual-stream mode.</p>
-                        <ul>
-                            <li><strong>Microphone capture:</strong> Standard voice input with configurable device selection</li>
-                            <li><strong>System audio capture:</strong> Record any audio playing through your system using standard virtual routing (like VB-Audio Cable)</li>
-                            <li><strong>Dual-stream mode:</strong> Capture mic and system audio simultaneously, with separate speaker labels</li>
-                            <li><strong>Device selection:</strong> Choose specific input devices by system ID</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> 🎯 Automatic Crosstalk & Noise Suppression
-                </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <p><strong>The problem:</strong> In meetings or calls with multiple speakers, transcription becomes messy. Background noise and overlapping speech corrupt results.</p>
-                        <p><strong>How Audrix fixes it:</strong> Built-in noise gate and crosstalk suppression filters out low-volume noise, and when using dual-stream mode, Audrix can distinguish between the local user (mic) and remote participants (system audio) based on audio characteristics.</p>
-                        <ul>
-                            <li><strong>Noise gate:</strong> Configurable threshold filters out silence and background hum</li>
-                            <li><strong>Crosstalk suppression:</strong> Dual-stream mode distinguishes user vs remote speakers</li>
-                            <li><strong>Speaker labeling:</strong> Automatic "User" / "Remote" tags in transcripts</li>
-                            <li><strong>RMS + peak analysis:</strong> Dual-threshold detection for accurate voice activity</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> 🔌 Flexible Backend Architecture
-                </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <p><strong>The problem:</strong> STT tools lock you into a single model or service. Switching requires reinstalling or reconfiguring everything.</p>
-                        <p>Audrix supports multiple transcription backends through a unified adapter interface. Switch between Whisper, Lemonade NPU-accelerated servers, or external WebSocket endpoints without changing your code.</p>
-                        <ul>
-                            <li><strong>Whisper backend:</strong> Default high-performance local server</li>
-                            <li><strong>Lemonade backend:</strong> AMD Ryzen NPU acceleration via FastFlowLM</li>
-                            <li><strong>External backends:</strong> Connect to any WebSocket or HTTP transcription server</li>
-                            <li><strong>Hot-swappable:</strong> Change backends at runtime via configuration</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-    </section>
-
-     <h2 id="core-features-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-         <span class="h2-icon">▶</span> Core Features
-     </h2>
-     <section class="core-features-section" id="core-features" style="display:none;">
-         <h3 id="audio-capture-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                 <span class="toggle-icon">▶</span> Audio Capture
-         </h3>
-        <section class="audio-section" id="audio-capture" style="display:none;">
-            <div class="cta-box">
-
-                
-                <p>Versatile audio capture with extensive configuration options:</p>
-                <p style="font-size: 0.9em; color: #888; margin-top: 8px;"><em>Powered by industry-standard open-source audio technology.</em></p>
-                <ul>
-                    <li><strong>System audio capture:</strong> Record any audio playing through your computer, YouTube, Zoom, music, meetings</li>
-                    <li><strong>Channels:</strong> Mono (1) or stereo (2) capture</li>
-                    <li><strong>Buffer sizes:</strong> Adjustable frames per buffer and commit intervals</li>
-                    <li><strong>Auto-gain:</strong> Configurable peak target and maximum gain normalization</li>
-                    <li><strong>Device selection:</strong> Choose specific audio input devices by system ID</li>
-                </ul>
-            </div>
-        </section>
-
-        <h3 id="transcription-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span> Transcription Engine
-        </h3>
-        <section class="transcription-section" id="transcription" style="display:none;">
-            <div class="cta-box">
-
-                
-                <p>High-accuracy transcription engine with intelligent merging and analysis:</p>
-                <ul>
-                    <li><strong>Real-time streaming:</strong> Continuous transcription as audio arrives</li>
-                    <li><strong>Smart merging:</strong> Word and character overlap detection prevents duplicate text</li>
-                    <li><strong>Partial results:</strong> Interim transcripts with configurable debounce timing</li>
-                    <li><strong>Language support:</strong> Multi-language auto-detection and routing</li>
-                    <li><strong>LLM analysis:</strong> Optional transcript analysis for topics, action items, decisions</li>
-                    <li><strong>Token-efficient:</strong> Prefer completed over delta transcripts to reduce noise</li>
-                </ul>
-            </div>
-        </section>
-
-        <h3 id="noise-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span> Noise &amp; Crosstalk Handling
-        </h3>
-        <section class="noise-section" id="noise-handling" style="display:none;">
-            <div class="cta-box">
-
-                
-                <p>Advanced audio preprocessing for clean transcripts:</p>
-                <ul>
-                    <li><strong>Noise gate:</strong> Silence detection using peak and RMS thresholds</li>
-                    <li><strong>Auto-gain control:</strong> Normalize audio levels for consistent transcription</li>
-                    <li><strong>Crosstalk suppression:</strong> Dual-stream mode distinguishes user vs remote speakers</li>
-                    <li><strong>Speaker labeling:</strong> Automatic "User" / "Remote" tags in dual-stream transcripts</li>
-                    <li><strong>Overlap window:</strong> Configurable time window (default 3000ms) for crosstalk analysis</li>
-                </ul>
-            </div>
-        </section>
-    </section>
-
-     <h2 id="backends-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-         <span class="h2-icon">▶</span> Backends &amp; Models
-     </h2>
-    <section class="backends-section" id="backends" style="display:none;">
-        <section class="technical-section" id="backend-details">
-            <div class="cta-box feature-detail-group">
-
-
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> Supported Backends
-                </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <ul>
-                            <li><strong>Whisper:</strong> Default high-performance local server</li>
-                            <li><strong>Lemonade:</strong> AMD NPU-accelerated server (FastFlowLM integration)</li>
-                            <li><strong>External:</strong> Any WebSocket or HTTP transcription endpoint</li>
-                            <li><strong>Model flexibility:</strong> Support for multiple open-source speech recognition models</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> Lemonade + NPU Acceleration
-                </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <p>For AMD Ryzen systems with NPU, Audrix integrates with <strong>Lemonade</strong> server and <strong>FastFlowLM</strong> for hardware-accelerated transcription:</p>
-                        <ul>
-                            <li><strong>NPU offload:</strong> Large speech model runs on Ryzen AI NPU</li>
-                            <li><strong>Auto-discovery:</strong> Automatically finds Lemonade server on localhost:8020</li>
-                            <li><strong>WebSocket streaming:</strong> Real-time transcription via ws://localhost:9000</li>
-                            <li><strong>Graceful fallback:</strong> Falls back to CPU if NPU unavailable</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                    <span class="toggle-icon">▶</span> Hardware Requirements
-                </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <ul>
-                            <li><strong>Minimum:</strong> 4GB RAM, any modern CPU</li>
-                            <li><strong>Recommended:</strong> 8GB+ RAM for larger models</li>
-                            <li><strong>NPU acceleration:</strong> AMD Ryzen 7040+ series with XDNA NPU</li>
-                            <li><strong>Audio device:</strong> Standard microphone or any sound card</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-
-    <h2 id="audio-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-        <span class="h2-icon">▶</span> Audio Capture Deep Dive
-    </h2>
-    <section class="audio-deep-section" id="audio-deep" style="display:none;">
-        <div class="cta-box">
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span> Audio Capture
-            </h3>
-            <div class="feature-detail-content" style="display:none;">
-                <div class="cta-box">
-                    <p>Audrix captures audio directly from your microphone or system output with minimal overhead:</p>
-                    <ul>
-                        <li><strong>Low-latency capture:</strong> Audio is captured and processed with minimal delay</li>
-                        <li><strong>Reliable streaming:</strong> Stable audio delivery to the transcription engine</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Virtual Cable Routing Guide -->
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span> 🌐 Setting Up System Audio (VB-Audio Cable Routing)
-            </h3>
-            <div class="feature-detail-content" style="display:none;">
-                <div class="cta-box">
-                    <p>To correctly capture system audio without losing your loudspeaker output, Windows must be configured to pass the virtual stream back to your hardware. This requires <a href="https://vb-audio.com/Cable/" target="_blank"><strong>VB-Audio Virtual Cable</strong></a>, a free virtual audio driver from VB-Audio.</p>
-                    
-                    <h4 style="margin-top: 15px; color: #fff;">1. Install VB-Audio Virtual Cable:</h4>
-                    <ol style="margin-left: 20px; line-height: 1.7;">
-                        <li>Download <a href="https://vb-audio.com/Cable/" target="_blank"><strong>VB-Audio Virtual Cable</strong></a> from the official VB-Audio website.</li>
-                        <li>Install the driver and reboot if prompted.</li>
-                    </ol>
-                    
-                    <h4 style="margin-top: 15px; color: #fff;">2. Configure Windows Sound Routing:</h4>
-                    <ol style="margin-left: 20px; line-height: 1.7;">
-                        <li>Open the Windows <strong>System Control (Control Panel)</strong> and open the <strong>Sound</strong> settings.</li>
-                        <li>Switch to the <strong>Recording</strong> tab.</li>
-                        <li>Select <strong>CABLE Output</strong> and open its <strong>Properties</strong>.</li>
-                        <li>Navigate to the <strong>Listen</strong> tab.</li>
-                        <li>Check the box for <strong>"Listen to this device"</strong>.</li>
-                        <li>In the dropdown menu, select your physical <strong>Loudspeaker</strong>. <em>(This hooks the cable output directly to your speakers so you can hear everything normally while the cable grabs the sound).</em></li>
-                    </ol>
-                    
-                    <h4 style="margin-top: 15px; color: #fff;">3. Configure Audrix:</h4>
-                    <p>In the Audrix device selection, simply select <strong>Cable Input (VB-Audio Virtual Cable)</strong> to grab and transcribe the system audio stream.</p>
-                    
-                    <blockquote style="margin-top: 15px; padding: 12px; background: #1a1a1a; border-left: 3px solid #00ff00; font-size: 0.9em; color: #ccc;">
-                        🎯 <strong>Result:</strong> System audio flows straight into the virtual cable for Audrix to grab, while simultaneously passing through to your loudspeakers so you do not miss a beat.
-                    </blockquote>
-                </div>
-            </div>
-
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span> Configuration Options
-            </h3>
-                <div class="feature-detail-content" style="display:none;">
-                    <div class="cta-box">
-                        <ul>
-                        <li><strong>Sample rate:</strong> Default 16000 Hz for optimal transcription quality, adjustable</li>
-                        <li><strong>Frames per buffer:</strong> 11025 default (configurable for latency/CPU trade-off)</li>
-                        <li><strong>Commit interval:</strong> How often to send accumulated audio to transcriber</li>
-                        <li><strong>Overlap buffers:</strong> Continuity between chunks for better word boundary detection</li>
-                        <li><strong>Auto-gain:</strong> Peak normalization with configurable target (default 0.25)</li>
-                        <li><strong>Silence thresholds:</strong> Peak (0.015) and RMS (0.003) for voice activity detection</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vision & OCR Section -->
-    <h2 id="vision-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-        <span class="h2-icon">▶</span> Vision &amp; OCR
-    </h2>
-    <section class="vision-section" id="vision" style="display:none;">
-        <div class="cta-box">
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span> Screen OCR &amp; Vision Analysis
-            </h3>
-            <div class="feature-detail-content" style="display:none;">
-                <div class="cta-box">
-                    <p>Beyond audio, Audrix includes local OCR and Vision capabilities to instantly read and analyze any section of your screen. Select a region, capture it, and get text extraction or visual analysis immediately. No cloud uploads, no API keys, no waiting.</p>
-                    <ul>
-                        <li><strong>Local OCR:</strong> Extract text from any screen region in real time</li>
-                        <li><strong>Vision analysis:</strong> AI-powered understanding of on-screen content, diagrams, UI elements</li>
-                        <li><strong>Region selection:</strong> Click and drag to capture any portion of your display</li>
-                        <li><strong>100% offline:</strong> Every OCR and Vision model runs entirely on your machine</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <h2 id="setup-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-        <span class="h2-icon">▶</span> Setup
-    </h2>
-    <section class="setup-section" id="setup" style="display:none;">
-        <div class="cta-box">
-            <p><strong>Your audio and screen deserve an intelligence engine that actually works for them.</strong> Download Audrix today. Runs fully offline, no cloud. Build a personal speech-to-text workspace that gets smarter every time you use it.</p>
-
-            <div class="download-buttons">           
-<a href="https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe" class="btn-partner">Download</a>	
-            </div>
-
-            <p style="font-size: 0.9em; color: #888; margin-top: 15px;">Version 1.0.2<br>No installation required for portable version. Your data stays on your machine.</p>
-
-            <h3 id="system-requirements-h2" class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span> System Requirements
-            </h3>
-            <div class="feature-detail-content" style="display:none;">
-                <div class="cta-box">
-                    <table class="req-table">
-                        <tr><th>Component</th><th>Minimum</th></tr>
-                        <tr><td>OS</td><td>Windows 10/11 (64-bit)</td></tr>
-                        <tr><td>CPU</td><td>Modern x64 processor</td></tr>
-                        <tr><td>RAM</td><td>4 GB</td></tr>
-                        <tr><td>Storage</td><td>2 GB (app + model)</td></tr>
-                        <tr><td>Audio</td><td>Standard microphone or any sound card</td></tr>
-                        <tr><td>Optional NPU</td><td>AMD Ryzen 7040+ with XDNA (for Lemonade backend)</td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <h2 id="support-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-         <span class="h2-icon">▶</span> Support &amp; Community
-     </h2>
-     <section class="support-wrapper-section" id="support" style="display:none;">
-     <section class="support-section" id="support-donations">
-        
-        <div class="cta-box">
-            
-            <h3>Join our Discord community</h3>
-            <div class="external-links">
-                <a href="https://discord.gg/4QkQSfSATF" target="_blank" class="btn btn-primary">Audrix Discord</a>
-            </div>
-         
-    
-        </div>
-    </section>
-    </section>
-
-		<h2 id="discover-h2" class="collapsible" onclick="toggleSectionFromH2(this)">
-            <span class="h2-icon">▶</span> Discover
-        </h2>
-    <section class="discover-wrapper-section" id="discover" style="display:none;">
-    <section class="other-products-section" id="other-products">
-
-        <div class="cta-box feature-detail-group">
-            
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span>Sorana - Your Personal AI That Actually Knows You
-            </h3>
-        <div class="feature-detail-content" style="display:none;" id="sorana-intro">
-            
-            <p>Sorana is your personal AI knowledge workspace, a second brain that actually acts. Unlike chatbots that forget you the moment you close the window, Sorana builds a lasting memory of your projects, files, and thinking style. Open it tomorrow and it already knows where you left off. Visualise your entire knowledge base on a spatial 2D canvas (like Obsidian Canvas, but AI-powered), chat with any document in plain language, and let your AI handle repetitive tasks, organising files, researching topics, managing emails, all without leaving your workspace. Everything runs on your machine. Your data stays yours.</p>
-            <figure class="screenshot-figure">
-                <a href="https://tetramatrix.github.io/Sorana" target="_blank"><img src="sorana.png" alt="Sorana Personal AI Knowledge Workspace Interface" class="sorana-screenshot"></a>
-                <figcaption>Sorana: Personal AI workspace with spatial knowledge canvas, persistent memory, and document chat, all running privately on your machine.</figcaption>
-            </figure>
-
-			<div class="cta-box feature-detail-group">
-	
-             <h4 class="style-box">Website &amp; Community</h4>
-            <div class="download-buttons">
-                <a href="https://tetramatrix.github.io/Sorana" target="_blank" class="btn btn-primary">🌐 Website</a>
-                <a href="https://discord.gg/4QkQSfSATF" target="_blank" class="btn btn-primary">💬 Discord</a>
-            </div>
-            
-            <h4 class="style-box">Featured on Microsoft Store:</h4>
-            <p>
-                <a href="https://apps.microsoft.com/store/detail/9N8C43PZC1RN" target="_blank"><img src="ms-store.svg" width="200px" height="60px" alt="Get it from Microsoft" /></a>
-            </p>
-        </div>
-		</div>
-
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-                <span class="toggle-icon">▶</span>TabNeuron - AI Spatial Tab Manager &amp; Research Workspace
-            </h3>
-        <div class="feature-detail-content" style="display:none;" id="tabneuron-intro">
-
-            
-            <p>TabNeuron breaks your browser tabs out of the tab bar and maps them onto a 2D canvas. AI automatically groups them by content, you can chat with any page or the live internet, deploy no-code research agents, and sync your layout back to Chrome Tab Groups, all from a portable desktop app that runs fully offline with a built-in model.</p>
-            <figure class="screenshot-figure">
-                <a href="http://tetramatrix.github.io/TabNeuron" target="_blank"><img src="tabneuron.png" alt="TabNeuron AI Spatial Tab Manager Interface" class="sorana-screenshot"></a>
-                <figcaption>TabNeuron: Browser tabs organized on an infinite 2D canvas with AI-powered grouping</figcaption>
-            </figure>
-
-			<div class="cta-box feature-detail-group">
-	
-             <h4 class="style-box">Website &amp; Community</h4>
-            <div class="download-buttons">
-                <a href="http://tetramatrix.github.io/TabNeuron" target="_blank" class="btn btn-primary">🌐 Website</a>
-                <a href="https://discord.gg/4QkQSfSATF" target="_blank" class="btn btn-primary">💬 Discord</a>
-            </div>
-            
-            <h4 class="style-box">Featured on Microsoft Store:</h4>
-            <p>
-                <a href="https://apps.microsoft.com/detail/9n8c43pzc1rn" target="_blank"><img src="ms-store.svg" width="200px" height="60px" alt="Get it from Microsoft" /></a>
-            </p>
-        </div>
-		</div>
-	
-		<h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-            <span class="toggle-icon">▶</span>RyzenZPilot - AMD Ryzen Power Management Tool</h3>
-        <div class="feature-detail-content" style="display:none;" id="ryzenzpilot-intro">
-
-            <p>RyzenZPilot is a powerful tool for managing AMD Ryzen processor power settings on Windows.
-            It allows users to adjust CPU performance, power limits, and thermal configurations
-            for optimal performance and efficiency.</p>
-
-
-			<div class="cta-box feature-detail-group">
-	
-            <h4 class="style-box">Website</h4>
-            <figure class="product-fig">
-                <a href="http://tetramatrix.github.io/RyzenZPilot" target="_blank">
-                    <img src="RyzenZPilot_3.1.3.png" title="AMD Ryzen Power Management Tool" alt="RyzenZPilot" />
-                </a>
-            </figure>
-        </div>
-			</div>
-			
-		<h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-            <span class="toggle-icon">▶</span>Aicono - AI Intelligent Desktop Icon Autopilot</h3>
-    
-        <div class="feature-detail-content" style="display:none;" id="aicono-intro">
-            
-            <p>Aicono automatically organizes your cluttered Windows desktop using AI. Group icons intelligently, arrange them neatly!</p>
-
-<div class="cta-box feature-detail-group">
-            <h4 class="style-box">Website</h4>
-            <figure class="product-fig">
-                <a href="http://tetramatrix.github.io/Aicono" target="_blank">
-                    <img src="Aicono.png" title="AI Intelligent Desktop Icon Autopilot" alt="Aicono" />
-                </a>
-            </figure>
-
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-            <span class="toggle-icon">▶</span>Featured on Microsoft Store</h3>
-            <div class="feature-detail-content" style="display:none;">
-            <figure class="store-fig">
-                <a href="https://apps.microsoft.com/store/detail/9NGFC27J1VBX" target="_blank">
-                    <img src="ms-store.svg" width="50%" height="50%" alt="Get it from Microsoft" />
-                </a>
-            </figure>
-						</div>
-
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-            <span class="toggle-icon">▶</span>Featured on Softpedia</h3>
-            <div class="feature-detail-content" style="display:none;">
-            <figure class="store-fig">
-                <a href="https://www.softpedia.com/get/Desktop-Enhancements/Other-Desktop-Enhancements/Aicono.shtml" target="_blank">
-                    <img src="softpedia.png" width="40%" height="40%" alt="Get it from Softpedia" />
-                </a>
-            </figure>
-						</div>
-            
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-            <span class="toggle-icon">▶</span>Featured on AlternativeTo</h3>
-            <div class="feature-detail-content" style="display:none;">
-            <figure class="store-fig">
-                <a href="https://alternativeto.net/software/aicono" title="Aicono automatically organizes your cluttered Windows desktop using AI. Group icons intelligently, arrange them neatly!" target="_blank">
-                    <img src="AlternativeTo.png" width="20%" alt="Aicono - AI Intelligent Desktop Icon Autopilot" />
-                </a>
-            </figure>
-						</div>
-						
-            <h3 class="feature-detail-toggle" onclick="toggleFeatureDetail(this)">
-            <span class="toggle-icon">▶</span>Featured on Product Hunt</h3>
-            <div class="feature-detail-content" style="display:none;">
-            <figure class="store-fig">
-                <a href="https://www.producthunt.com/products/aicono?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-aicono" target="_blank">
-                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1018479&theme=dark&t=1758526753475" alt="Aicono - The AI intelligent desktop icon autopilot for Windows | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
-                </a>
-            </figure>
-            </div>
-        </div>
+<!-- AD SPOT A -->
+<div class="ad-container">
+  <p class="ad-label">Sponsored</p>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-6449563648591184"
+       data-ad-slot="8924662119"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-    </section>
-    </section>
 
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+  <div class="section-header">
+    <h2 id="overview-h2">Your audio and screen, <em>analyzed instantly.</em></h2>
+    <p>Audrix transforms live audio and on-screen visuals into immediate, actionable insights. Built for speed and absolute privacy.</p>
+  </div>
+  <div class="overview-grid">
+    <div class="overview-text">
+      <p><strong>Audrix is a real-time local intelligence engine for Windows.</strong> It captures microphone or system output for crisp speech-to-text with advanced noise suppression and crosstalk detection, while simultaneously running live AI analysis on the audio stream as it happens. Pair this with local OCR and Vision capabilities to instantly read and analyze any section of your screen.</p>
+      <p>Built for low-latency transcription with configurable noise suppression, automatic crosstalk detection, and support for multiple providers. <strong>Every model executes entirely offline.</strong> Your audio and screen data never touch the cloud.</p>
+      <p>Runs from a USB stick. No install, no account, no cloud sync.</p>
+    </div>
+    <div class="overview-video">
+      <img src="Audrix_Settings.png" alt="Audrix settings and backend configuration" loading="lazy" width="640" height="400">
+    </div>
+  </div>
+</section>
 
-        <div class="cta-box">
-            <p style="text-align:center; color:#888;"><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:#888; text-decoration:none;">↑ Back to Top</a></p>
-            <p style="text-align:center; color:#666; font-size: 0.75em; margin-top: 5px;">A free community build is available. Session duration is capped at 30 minutes with cooldown periods between uses.</p>
+<!-- AD SPOT B -->
+<div class="ad-container">
+  <p class="ad-label">Sponsored</p>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:468px;height:60px"
+       data-ad-client="ca-pub-6449563648591184"
+       data-ad-slot="6119369521"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- WHY AUDRIX -->
+<section class="section section-alt" id="why-audrix">
+  <div class="section-header">
+    <h2 id="why-audrix-h2">Why Audrix? Because <em>local STT should be easy.</em></h2>
+    <p>Common frustrations and how Audrix solves them.</p>
+  </div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <h3>AI can't hear your system audio</h3>
+      <p>Most STT tools only capture the microphone. You cannot transcribe YouTube videos, Zoom calls, or any audio playing through your speakers.</p>
+      <ul>
+        <li><strong>Loopback capture:</strong> Record any audio playing through your system</li>
+        <li><strong>Dual-stream mode:</strong> Capture mic and system audio simultaneously</li>
+        <li><strong>Device selection:</strong> Choose specific input devices by system ID</li>
+      </ul>
+    </div>
+    <div class="problem-card">
+      <h3>Transcription locks you to the cloud</h3>
+      <p>Cloud STT services send your audio to remote servers. You pay per minute, lose privacy, and depend on internet connectivity.</p>
+      <ul>
+        <li><strong>Fully offline:</strong> All processing happens on your machine</li>
+        <li><strong>Multiple backends:</strong> Whisper, Lemonade, External endpoints</li>
+        <li><strong>Zero recurring cost:</strong> Use free local models or bring your own API key</li>
+      </ul>
+    </div>
+    <div class="problem-card">
+      <h3>Overlapping speech ruins transcripts</h3>
+      <p>In meetings or calls with multiple speakers, transcription becomes messy. Background noise and overlapping speech corrupt results.</p>
+      <ul>
+        <li><strong>Noise gate:</strong> Configurable threshold filters out silence and background hum</li>
+        <li><strong>Crosstalk suppression:</strong> Dual-stream mode distinguishes user vs remote speakers</li>
+        <li><strong>Speaker labeling:</strong> Automatic "User" / "Remote" tags in transcripts</li>
+      </ul>
+    </div>
+    <div class="problem-card">
+      <h3>Screen text stays locked in images</h3>
+      <p>You can search audio but not what you see. Important details in videos, demos, or documents remain inaccessible to text-based tools.</p>
+      <ul>
+        <li><strong>Local OCR:</strong> Extract text from any screen region in real time</li>
+        <li><strong>Vision analysis:</strong> AI-powered understanding of on-screen content</li>
+        <li><strong>Region selection:</strong> Click and drag to capture any portion of your display</li>
+      </ul>
+    </div>
+    <div class="problem-card">
+      <h3>Switching engines means reinstalling</h3>
+      <p>Most STT tools lock you into a single model or service. Changing transcription providers requires reinstalling or reconfiguring everything.</p>
+      <ul>
+        <li><strong>Hot-swappable backends:</strong> Change engines at runtime via configuration</li>
+        <li><strong>Unified adapter interface:</strong> One API, multiple providers</li>
+        <li><strong>No code changes:</strong> Switch without touching your workflow</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CORE FEATURES -->
+<section class="section" id="features">
+  <div class="section-header">
+    <h2 id="core-features-h2">Core features for <em>serious audio intelligence.</em></h2>
+    <p>Everything you need for real-time transcription, screen analysis, and flexible backend support.</p>
+  </div>
+  <div class="features-grid" id="topFeatures">
+    <div class="feature-card large">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3>Real-Time Transcription</h3>
+      <p>Audrix transcribes audio in real-time as it is captured. See text appear the moment words are spoken, perfect for live captions, meeting notes, or voice commands. Smart merging prevents duplicate text, and partial results give you faster feedback before finalization.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 21v-2"/><path d="M4 17V3"/><path d="M12 21v-6"/><path d="M12 11V3"/><path d="M20 21V13"/><path d="M20 9V3"/>
+        </svg>
+      </div>
+      <h3>System Audio + Mic</h3>
+      <p>Capture your microphone, any app's audio output, or both simultaneously with automatic speaker separation. Transcribe your voice, YouTube videos, Zoom calls, or any system audio.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        </svg>
+      </div>
+      <h3>Noise &amp; Crosstalk</h3>
+      <p>Configurable noise gate and auto-gain keep background hum and silence out of your transcripts. Dual-stream mode distinguishes the local user from remote speakers on calls.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+        </svg>
+      </div>
+      <h3>Flexible Backends</h3>
+      <p>Plug in Whisper, Lemonade NPU acceleration, or any external WebSocket or HTTP transcription endpoint. Switch at runtime without reinstalling.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+      </div>
+      <h3>Local OCR &amp; Vision</h3>
+      <p>Extract text from any screen region in real time with local optical character recognition. AI-powered visual understanding of on-screen content, diagrams, and UI elements.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3>100% Offline</h3>
+      <p>Every model executes entirely on your machine. Your audio, transcripts, and screen captures never touch the cloud. No subscriptions, no API keys, no limits.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/>
+        </svg>
+      </div>
+      <h3>Dual-Stream Mode</h3>
+      <p>Capture microphone and system audio simultaneously. Built-in crosstalk suppression distinguishes the local user from remote participants on calls.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <h3>Configurable Pipeline</h3>
+      <p>Adjust sample rates, buffer sizes, commit intervals, and silence thresholds. Fine-tune every parameter for your hardware and use case.</p>
+    </div>
+    <div class="feature-card ad-card">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-format="fluid"
+           data-ad-layout-key="-7g+ex-1i-2s+ay"
+           data-ad-client="ca-pub-6449563648591184"
+           data-ad-slot="9713451440"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+  <div class="features-grid" id="moreFeatures" style="display:none;">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4"/><path d="M2 12h4"/><path d="M12 2v4"/><path d="M12 22v-4"/><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>
+        </svg>
+      </div>
+      <h3>Health Dashboard</h3>
+      <p>First-boot setup wizard plus ongoing monitoring. Covers OCR, search engines, model cache, backends, and more.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>
+        </svg>
+      </div>
+      <h3>Hot-Swap Backends</h3>
+      <p>Change transcription engines at runtime via configuration. No restarts, no code changes, no downtime.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
+        </svg>
+      </div>
+      <h3>Tesseract Image OCR</h3>
+      <p>Extract text from scanned photos, screenshots, and images. Vision-capable models can read images directly as a fallback.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 2l-4 4-4-4"/>
+        </svg>
+      </div>
+      <h3>NPU Acceleration</h3>
+      <p>AMD Ryzen 7040+ series with XDNA NPU offloads the transcription model for blazing-fast, low-power performance.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin:var(--space-8) 0 var(--space-6);">
+    <button id="toggleFeatures" class="btn-outline" style="font-size:var(--text-sm);">4 more features ↓</button>
+  </div>
+  <div class="screenshot-strip">
+    <figure class="screenshot-card">
+      <img src="Audrix_Main.png" alt="Audrix main interface" loading="lazy" width="640" height="400">
+      <figcaption>Real-time transcription with live audio waveform and text output.</figcaption>
+    </figure>
+    <figure class="screenshot-card">
+      <img src="Audrix_Settings.png" alt="Audrix settings" loading="lazy" width="640" height="400">
+      <figcaption>Configure backends, audio devices, noise thresholds, and more.</figcaption>
+    </figure>
+    <figure class="screenshot-card">
+      <img src="Audrix_Models.png" alt="Audrix models" loading="lazy" width="640" height="400">
+      <figcaption>Switch between Whisper, Lemonade, and external transcription engines.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- EXAMPLES -->
+<section class="section" id="chat-examples">
+  <div class="section-header">
+    <h2>See what you can <em>ask Audrix.</em></h2>
+    <p>From transcription to screen analysis, Audrix handles real-time audio and visual intelligence.</p>
+  </div>
+  <div class="examples-grid">
+    <div class="example-card">
+      <h4>Transcription</h4>
+      <ul>
+        <li>"Transcribe this meeting in real time with speaker labels"</li>
+        <li>"Capture system audio from YouTube and save the transcript"</li>
+        <li>"Enable noise suppression and crosstalk detection for this call"</li>
+        <li>"Switch to the Lemonade backend for NPU acceleration"</li>
+      </ul>
+    </div>
+    <div class="example-card">
+      <h4>Audio Routing</h4>
+      <ul>
+        <li>"Capture both microphone and system audio simultaneously"</li>
+        <li>"Route Zoom audio through VB-Audio Cable for transcription"</li>
+        <li>"Set the noise gate threshold to 0.02 for this environment"</li>
+        <li>"Label speakers as User and Remote in dual-stream mode"</li>
+      </ul>
+    </div>
+    <div class="example-card">
+      <h4>Crosstalk &amp; Noise</h4>
+      <ul>
+        <li>"Enable crosstalk suppression for multi-speaker meetings"</li>
+        <li>"Adjust RMS and peak thresholds for voice activity detection"</li>
+        <li>"Filter out background hum from the air conditioning"</li>
+        <li>"Separate overlapping speech into distinct speaker tracks"</li>
+      </ul>
+    </div>
+    <div class="example-card">
+      <h4>System Audio</h4>
+      <ul>
+        <li>"Capture audio from this video and transcribe it live"</li>
+        <li>"Listen to system output without muting my speakers"</li>
+        <li>"Configure VB-Audio Virtual Cable for loopback capture"</li>
+        <li>"Transcribe a Zoom call while keeping my mic active"</li>
+      </ul>
+    </div>
+    <div class="example-card">
+      <h4>OCR &amp; Vision</h4>
+      <ul>
+        <li>"Select this screen region and extract all text"</li>
+        <li>"Analyze this diagram and describe what it shows"</li>
+        <li>"Read the error message from this screenshot"</li>
+        <li>"Extract table data from this on-screen spreadsheet"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AD SPOT D -->
+<div class="ad-container">
+  <p class="ad-label">Sponsored</p>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:300px;height:250px"
+       data-ad-client="ca-pub-6449563648591184"
+       data-ad-slot="3798779788"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- COMPARISON -->
+<section class="section section-alt" id="comparison">
+  <div class="section-header">
+    <h2>How Audrix <em>compares.</em></h2>
+    <p>The local advantage for speech-to-text and screen intelligence.</p>
+  </div>
+  <div style="overflow-x: auto; display: block;">
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>What you get</th>
+        <th>Audrix</th>
+        <th>Cloud STT</th>
+        <th>Generic Offline STT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Runs fully offline &amp; private</td><td class="win">Your machine, your data. No internet needed.</td><td>Cloud only. Your data on their servers.</td><td>Local processing, limited features</td></tr>
+      <tr><td>System audio capture</td><td class="win">Loopback + mic, dual-stream mode</td><td>Microphone only</td><td>Rare or unsupported</td></tr>
+      <tr><td>Crosstalk suppression</td><td class="win">Dual-stream distinguishes speakers</td><td>Basic noise removal only</td><td>Unsupported</td></tr>
+      <tr><td>Local OCR &amp; Vision</td><td class="win">Built-in screen analysis</td><td>Cloud-only vision APIs</td><td>Unsupported</td></tr>
+      <tr><td>Privacy</td><td class="win">Zero data leaves your machine</td><td>Audio sent to remote servers</td><td>Local but no ecosystem</td></tr>
+      <tr><td>Cost</td><td class="win">$0 — free community build</td><td>$0.006–$0.03 per minute</td><td>Free but limited</td></tr>
+      <tr><td>NPU acceleration</td><td class="win">AMD Ryzen AI via Lemonade</td><td>Server-side GPUs only</td><td>CPU-bound</td></tr>
+      <tr><td>Portable</td><td class="win">Runs from USB, no install</td><td>App install or web only</td><td>App install required</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- AD SPOT E -->
+<div class="ad-container">
+  <p class="ad-label">Sponsored</p>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-6449563648591184"
+       data-ad-slot="8476391393"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- WHO USES -->
+<section class="section" id="who-uses">
+  <div class="section-header">
+    <h2>Built for <em>everyone who listens.</em></h2>
+    <p>Researchers, coders, journalists, meeting hosts, and anyone who values privacy and offline capability.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+      <h3>Researchers &amp; academics</h3>
+      <p>Transcribe interviews, lectures, and meetings with perfect accuracy and speaker separation.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <h3>Writers &amp; journalists</h3>
+      <p>Dictate articles, transcribe interviews, and capture audio notes with instant text output.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 2l-4 4-4-4"/></svg></div>
+      <h3>Meeting hosts</h3>
+      <p>Run live captions for Zoom, Teams, or Discord calls. Dual-stream mode separates local and remote speakers.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-4 2"/><path d="M6 12v5l6 3 6-3v-5"/></svg></div>
+      <h3>Coders &amp; programmers</h3>
+      <p>Transcribe coding sessions, capture system audio from tutorials, and use OCR to read documentation or error messages.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+      <h3>Privacy-conscious users</h3>
+      <p>Full transcription power with zero data leaving your machine. No accounts, no cloud sync, no tracking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AD SPOT F -->
+<div class="ad-container">
+  <p class="ad-label">Sponsored</p>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:336px;height:280px"
+       data-ad-client="ca-pub-6449563648591184"
+       data-ad-slot="8429838091"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- PROVIDERS -->
+<section class="providers-section" id="providers">
+  <p class="section-label">Supported backends</p>
+  <p class="section-label providers-sub-label">Transcription Engines</p>
+  <div class="providers-grid">
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L1 4v8l7 3 7-3V4L8 1z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      Whisper
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="6" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="#8a8f98"/></svg>
+      Lemonade
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="7" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="#8a8f98"/></svg>
+      External WebSocket
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L14 8L8 15L2 8L8 1Z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      Ollama
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><rect x="2" y="2" width="12" height="12" rx="2" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      LM Studio
+    </div>
+  </div>
+  <p class="section-label providers-sub-label">Local / On-premise</p>
+  <div class="providers-grid">
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="6" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="#8a8f98"/></svg>
+      Lemonade
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L14 8L8 15L2 8L8 1Z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      Ollama
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><rect x="2" y="2" width="12" height="12" rx="2" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      LM Studio
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M2 8h12M8 2v12" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      Llama.cpp
+    </div>
+  </div>
+</section>
+
+<!-- MODEL PREVIEW -->
+<section class="model-preview" id="models">
+  <div class="model-preview-inner">
+    <div class="section-header" style="margin-bottom: var(--space-8);">
+      <h2>A taste of <em>what's inside.</em></h2>
+      <p>Fast local transcription with AMD Ryzen NPU acceleration, plus external endpoint support.</p>
+    </div>
+    <div class="model-rows">
+      <div class="model-row">
+        <span class="model-provider">Lemonade (Local)</span>
+        <span class="model-name">Qwen3.6-35B-A3B-UD-IQ2_M</span>
+        <span class="model-desc">AMD Ryzen NPU-accelerated quantized model via FastFlowLM</span>
+        <span class="model-tag installed">ACTIVE</span>
+      </div>
+      <div class="model-row">
+        <span class="model-provider">Whisper</span>
+        <span class="model-name">whisper-large-v3</span>
+        <span class="model-desc">OpenAI Whisper large model for high-accuracy transcription</span>
+        <span class="model-tag configured">CONFIGURED</span>
+      </div>
+      <div class="model-row">
+        <span class="model-provider">External</span>
+        <span class="model-name">ws://localhost:9000</span>
+        <span class="model-desc">Custom WebSocket transcription endpoint</span>
+        <span class="model-tag free">EXTERNAL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIO DEEP DIVE -->
+<section class="section" id="audio">
+  <div class="section-header">
+    <h2 id="audio-h2">Audio Capture <em>deep dive.</em></h2>
+    <p>Low-latency audio capture with configurable pipeline for transcription and analysis.</p>
+  </div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <h3>Low-Latency Capture</h3>
+      <p>Audio is captured and processed with minimal delay. Reliable streaming delivers stable audio to the transcription engine.</p>
+      <ul>
+        <li><strong>Minimal overhead:</strong> Direct audio capture with no intermediate processing</li>
+        <li><strong>Stable streaming:</strong> Consistent delivery to the transcription backend</li>
+        <li><strong>Configurable buffer:</strong> Adjust frames per buffer and commit intervals</li>
+      </ul>
+    </div>
+    <div class="problem-card">
+      <h3>Setting Up System Audio (VB-Audio Cable Routing)</h3>
+      <p>To correctly capture system audio without losing your loudspeaker output, Windows must be configured to pass the virtual stream back to your hardware. This requires <a href="https://vb-audio.com/Cable/" target="_blank"><strong>VB-Audio Virtual Cable</strong></a>, a free virtual audio driver.</p>
+      <ul>
+        <li>Install VB-Audio Virtual Cable and reboot if prompted</li>
+        <li>Open Windows Sound settings and switch to the Recording tab</li>
+        <li>Select <strong>CABLE Output</strong>, open Properties, and navigate to the Listen tab</li>
+        <li>Check "Listen to this device" and select your physical Loudspeaker</li>
+        <li>In Audrix, select <strong>Cable Input (VB-Audio Virtual Cable)</strong> as your device</li>
+      </ul>
+    </div>
+    <div class="problem-card">
+      <h3>Configuration Options</h3>
+      <p>Fine-tune the audio pipeline for your hardware and environment.</p>
+      <ul>
+        <li><strong>Sample rate:</strong> Default 16000 Hz for optimal transcription quality, adjustable</li>
+        <li><strong>Frames per buffer:</strong> 11025 default (configurable for latency/CPU trade-off)</li>
+        <li><strong>Commit interval:</strong> How often to send accumulated audio to transcriber</li>
+        <li><strong>Overlap buffers:</strong> Continuity between chunks for better word boundary detection</li>
+        <li><strong>Auto-gain:</strong> Peak normalization with configurable target (default 0.25)</li>
+        <li><strong>Silence thresholds:</strong> Peak (0.015) and RMS (0.003) for voice activity detection</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- VISION & OCR -->
+<section class="section section-alt" id="vision">
+  <div class="section-header">
+    <h2 id="vision-h2">Vision &amp; <em>OCR.</em></h2>
+    <p>Read and analyze any section of your screen with local OCR and Vision.</p>
+  </div>
+  <div class="overview-grid">
+    <div class="overview-text">
+      <p><strong>Beyond audio, Audrix includes local OCR and Vision capabilities.</strong> Select a region, capture it, and get text extraction or visual analysis immediately. No cloud uploads, no API keys, no waiting.</p>
+      <ul>
+        <li><strong>Local OCR:</strong> Extract text from any screen region in real time</li>
+        <li><strong>Vision analysis:</strong> AI-powered understanding of on-screen content, diagrams, UI elements</li>
+        <li><strong>Region selection:</strong> Click and drag to capture any portion of your display</li>
+        <li><strong>100% offline:</strong> Every OCR and Vision model runs entirely on your machine</li>
+      </ul>
+    </div>
+    <div class="overview-video">
+      <img src="Audrix_Settings.png" alt="Audrix Vision and OCR settings">
+    </div>
+  </div>
+</section>
+
+<!-- SETUP -->
+<section class="section" id="setup">
+  <div class="section-header">
+    <h2 id="setup-h2">Get started in <em>minutes.</em></h2>
+    <p>Download, extract, and run. No installation required.</p>
+  </div>
+  <div class="setup-grid">
+    <div class="setup-card">
+      <h3>Download</h3>
+      <p>Grab the latest portable executable from GitHub. Extract it anywhere, even a USB drive.</p>
+    </div>
+    <div class="setup-card">
+      <h3>Choose a backend</h3>
+      <p>Use Whisper, Lemonade NPU acceleration, or any external transcription endpoint. Switch at runtime.</p>
+    </div>
+    <div class="setup-card">
+      <h3>Start transcribing</h3>
+      <p>Select your audio device, configure noise thresholds, and watch real-time transcripts appear.</p>
+    </div>
+  </div>
+  <div class="cta-section" style="padding: var(--space-12) 0 0; max-width: none;">
+    <div class="cta-actions">
+      <a href="https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe" class="btn-primary">Get Audrix Free</a>
+      <a href="https://github.com/Tetramatrix/Audrix" class="btn-outline">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="section section-alt" id="support">
+  <div class="section-header">
+    <h2 id="support-h2">Need <em>help?</em></h2>
+    <p>Join the community, leave a review, or support the project.</p>
+  </div>
+  <div class="setup-grid">
+    <div class="setup-card">
+      <h3>Community</h3>
+      <p>Join the Discord server to ask questions, share workflows, and get help from other Audrix users.</p>
+      <a href="https://discord.gg/4QkQSfSATF" target="_blank" class="btn-outline" style="margin-top: var(--space-4);">Join Discord</a>
+    </div>
+    <div class="setup-card">
+      <h3>Feedback</h3>
+      <p>Have a question, suggestion, or bug report? Open a discussion or issue on GitHub.</p>
+      <a href="https://github.com/Tetramatrix/Audrix" target="_blank" class="btn-outline" style="margin-top: var(--space-4);">GitHub Feedback</a>
+    </div>
+    <div class="setup-card">
+      <h3>Softpedia feedback</h3>
+      <p>Leave feedback on Softpedia to let other users know what you think.</p>
+      <a href="https://www.softpedia.com/get/Office-tools/Audrix.shtml" target="_blank" class="btn-outline" style="margin-top: var(--space-4);">Softpedia Feedback</a>
+    </div>
+    <div class="setup-card">
+      <h3>AlternativeTo</h3>
+      <p>Leave feedback on AlternativeTo to help others discover Audrix.</p>
+      <a href="https://alternativeto.net/software/audrix" target="_blank" class="btn-outline" style="margin-top: var(--space-4);">AlternativeTo Feedback</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-header">
+    <h2>Simple <em>pricing.</em></h2>
+    <p>Audrix is fully free today. A planned premium option is coming for users who want extended use and support.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card pricing-card--accent">
+      <div class="pricing-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3 class="pricing-name">Free</h3>
+      <div class="pricing-price">$0</div>
+      <p class="pricing-desc">Free community build with a 30-minute session cap. Bring your own models or use built-in backends. No account, no trial clock.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21v-2"/><path d="M4 17V3"/><path d="M12 21v-6"/><path d="M12 11V3"/><path d="M20 21V13"/><path d="M20 9V3"/></svg>
+      </div>
+      <h3 class="pricing-name">Studio &amp; Enterprise</h3>
+      <div class="pricing-price">Coming soon</div>
+      <p class="pricing-desc">Optional paid tiers for extended session duration, priority support, and commercial licensing. All current features remain available in the free tier.</p>
+      <p class="pricing-note">Not yet available — join Discord for updates.</p>
+      <a href="https://discord.gg/4QkQSfSATF" target="_blank" rel="noopener" class="btn-outline pricing-cta">Join Discord for updates</a>
+    </div>
+  </div>
+</section>
+
+<!-- AD SPOT G -->
+<div class="ad-container">
+  <p class="ad-label">Sponsored</p>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-6449563648591184"
+       data-ad-slot="3783483244"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<!-- DISCOVER -->
+<section class="section section-alt" id="discover">
+  <div class="section-header">
+    <h2 id="discover-h2">Discover <em>more apps.</em></h2>
+    <p>Other tools from Tetramatrix for productivity, gaming, and AI-powered workflows.</p>
+  </div>
+  <div class="discover-grid">
+    <div class="discover-card">
+      <img src="sorana.png" alt="Sorana Personal AI Knowledge Workspace" loading="lazy" width="640" height="400">
+      <div class="discover-card-body">
+        <h3>Sorana</h3>
+        <p>Your personal AI knowledge workspace. A second brain that remembers your projects, learns your style, and acts on your files. Runs fully offline on Windows.</p>
+        <div class="discover-links">
+          <a href="https://tetramatrix.github.io/Sorana" target="_blank" rel="noopener">Website</a>
+          <a href="https://discord.gg/4QkQSfSATF" target="_blank" rel="noopener">Discord</a>
+          <a href="https://apps.microsoft.com/detail/9n8c43pzc1rn" target="_blank" rel="noopener">Microsoft Store</a>
         </div>
+      </div>
+    </div>
+    <div class="discover-card">
+      <img src="Aicono.png" alt="Aicono AI desktop icon organizer" loading="lazy" width="640" height="400">
+      <div class="discover-card-body">
+        <h3>Aicono</h3>
+        <p>AI Intelligent Desktop Icon Autopilot. Automatically organizes your cluttered Windows desktop using AI. Group icons intelligently, arrange them neatly.</p>
+        <div class="discover-links">
+          <a href="http://tetramatrix.github.io/Aicono" target="_blank" rel="noopener">Website</a>
+          <a href="https://apps.microsoft.com/store/detail/9NGFC27J1VBX" target="_blank" rel="noopener">Microsoft Store</a>
+          <a href="https://www.softpedia.com/get/Desktop-Enhancements/Other-Desktop-Enhancements/Aicono.shtml" target="_blank" rel="noopener">Softpedia</a>
+          <a href="https://alternativeto.net/software/aicono" target="_blank" rel="noopener">AlternativeTo</a>
+        </div>
+      </div>
+    </div>
+    <div class="discover-card">
+      <img src="TabNeuron.png" alt="TabNeuron AI spatial tab manager" loading="lazy" width="640" height="400">
+      <div class="discover-card-body">
+        <h3>TabNeuron</h3>
+        <p>AI Spatial Tab Manager &amp; Research Workspace. Maps browser tabs onto a 2D canvas, AI groups them by content, chat with any page or the live internet.</p>
+        <div class="discover-links">
+          <a href="http://tetramatrix.github.io/TabNeuron" target="_blank" rel="noopener">Website</a>
+          <a href="https://discord.gg/4QkQSfSATF" target="_blank" rel="noopener">Discord</a>
+          <a href="https://apps.microsoft.com/detail/9n8c43pzc1rn" target="_blank" rel="noopener">Microsoft Store</a>
+        </div>
+      </div>
+    </div>
+    <div class="discover-card">
+      <img src="RyzenZPilot_3.1.3.png" alt="RyzenZPilot AMD power management" loading="lazy" width="640" height="400">
+      <div class="discover-card-body">
+        <h3>RyzenZPilot</h3>
+        <p>Powerful tool for managing AMD Ryzen processor power settings on Windows. Adjust CPU performance, power limits, and thermal configurations.</p>
+        <div class="discover-links">
+          <a href="http://tetramatrix.github.io/RyzenZPilot" target="_blank" rel="noopener">Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-     <script>
-         function toggleFeatureDetail(element) {
-             const icon = element.querySelector('.toggle-icon');
-             
-             // Pattern 1: h3 has a .feature-detail-content as its next element sibling
-             let next = element.nextElementSibling;
-             while (next && (!next.classList || !next.classList.contains('feature-detail-content'))) {
-                 next = next.nextElementSibling;
-             }
-             if (next) {
-                 if (next.style.display === 'none' || next.style.display === '') {
-                     next.style.display = 'block';
-                     icon.textContent = '▼';
-                     element.classList.add('active');
-                 } else {
-                     next.style.display = 'none';
-                     icon.textContent = '▶';
-                     element.classList.remove('active');
-                 }
-                 return;
-             }
-             
-             // Pattern 2: h3 is inside a .cta-box with a .feature-detail-content child
-             const ctaBox = element.closest('.cta-box');
-             if (ctaBox) {
-                 const content = ctaBox.querySelector(':scope > .feature-detail-content');
-                 if (content) {
-                     if (content.style.display === 'none' || content.style.display === '') {
-                         content.style.display = 'block';
-                         icon.textContent = '▼';
-                         element.classList.add('active');
-                     } else {
-                         content.style.display = 'none';
-                         icon.textContent = '▶';
-                         element.classList.remove('active');
-                     }
-                     return;
-                 }
-             }
-             
-             // Pattern 3: h3 is outside, toggle the next <section> sibling
-             next = element.nextElementSibling;
-             while (next && next.tagName !== 'SECTION') {
-                 next = next.nextElementSibling;
-             }
-             if (next) {
-                 if (next.style.display === 'none' || next.style.display === '') {
-                     next.style.display = 'block';
-                     icon.textContent = '▼';
-                     element.classList.add('active');
-                 } else {
-                     next.style.display = 'none';
-                     icon.textContent = '▶';
-                     element.classList.remove('active');
-                 }
-             }
-         }
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-header">
+    <h2>Common <em>questions.</em></h2>
+    <p>Quick answers before you download.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:var(--space-4);max-width:760px;margin:0 auto;">
+    <details class="faq-item">
+      <summary>Does Audrix cost anything?</summary>
+      <p>Audrix is free to download and use. A free community build is available with a 30-minute session cap. Studio and Enterprise editions are available for extended use.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Does my data leave my machine?</summary>
+      <p>No. All processing happens locally on your machine. Your audio and screen data never touch the cloud.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I run it from a USB stick?</summary>
+      <p>Yes. Audrix is a portable executable. Extract it anywhere and run it. No installation, no registry changes, no admin rights required.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What transcription backends are supported?</summary>
+      <p>Audrix supports Whisper, Lemonade (AMD Ryzen NPU acceleration via FastFlowLM), and any external WebSocket or HTTP transcription endpoint. Backends are hot-swappable at runtime.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Does it support system audio capture?</summary>
+      <p>Yes. Audrix captures microphone, system audio (loopback), or both simultaneously. Dual-stream mode distinguishes the local user from remote speakers on calls.</p>
+    </details>
+  </div>
+</section>
 
-         function toggleSectionFromArrow(arrow) {
-             const ctaBox = arrow.closest('.cta-box');
-             if (!ctaBox) return;
-             
-             // Try Pattern 1: feature-detail-content as direct child
-             const content = ctaBox.querySelector(':scope > .feature-detail-content');
-             if (content) {
-                 const navArrows = ctaBox.querySelectorAll('.nav-arrow-down, .nav-arrow-up');
-                 if (content.style.display === 'none' || content.style.display === '') {
-                     content.style.display = 'block';
-                     navArrows.forEach(a => a.textContent = '▼');
-                 } else {
-                     content.style.display = 'none';
-                     navArrows.forEach(a => a.textContent = '▶');
-                 }
-                 return;
-             }
-             
-             // Try Pattern 2: cta-box inside a section, toggle the section
-             const section = ctaBox.closest('section');
-             if (section) {
-                 const icon = section.querySelector('.feature-detail-toggle .toggle-icon') || section.querySelector('.h2-icon');
-                 if (section.style.display === 'none' || section.style.display === '') {
-                     section.style.display = 'block';
-                     if (icon) {
-                         icon.textContent = '▼';
-                         const h2 = icon.closest('.collapsible');
-                         if (h2) h2.classList.add('active');
-                     }
-                 } else {
-                     section.style.display = 'none';
-                     if (icon) {
-                         icon.textContent = '▶';
-                         const h2 = icon.closest('.collapsible');
-                         if (h2) h2.classList.remove('active');
-                     }
-                 }
-             }
-         }
+<!-- AD SPOT H -->
+<div class="ad-container">
+  <p class="ad-label">Sponsored</p>
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-6449563648591184"
+       data-ad-slot="9816026248"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
-         function toggleSectionFromH2(h2) {
-             const icon = h2.querySelector('.h2-icon');
-             let next = h2.nextElementSibling;
-             while (next && next.tagName !== 'SECTION') {
-                 next = next.nextElementSibling;
-             }
-             if (next) {
-                 if (next.style.display === 'none' || next.style.display === '') {
-                     next.style.display = 'block';
-                     icon.textContent = '▼';
-                 } else {
-                     next.style.display = 'none';
-                     icon.textContent = '▶';
-                 }
-             }
-         }
-     </script>
+<!-- FOOTER CTA -->
+<section class="cta-section">
+  <h2>Real-time intelligence. <em>No cloud required.</em></h2>
+  <p>Download Audrix and get instant local speech-to-text, system audio capture, noise suppression, and OCR. Free, private, and built for Windows.</p>
+  <div class="cta-actions">
+    <a href="https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe" class="btn-primary">Get Audrix Free</a>
+    <a href="https://github.com/Tetramatrix/Audrix" class="btn-outline">View on GitHub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;">
+    <span>© 2026 Audrix. Built for audio intelligence.</span>
+    <a href="https://github.com/Tetramatrix/Audrix/blob/main/docs/Changelog.md" target="_blank" rel="noopener" style="color:var(--color-text-muted);text-decoration:none;font-size:var(--text-xs);">Changelog</a>
+    <a href="https://github.com/Tetramatrix/Audrix/issues" target="_blank" rel="noopener" style="color:var(--color-text-muted);text-decoration:none;font-size:var(--text-xs);">GitHub Issues</a>
+    <a href="https://github.com/Tetramatrix/Audrix" target="_blank" rel="noopener" style="color:var(--color-text-muted);text-decoration:none;font-size:var(--text-xs);">GitHub Repository</a>
+    <span style="color:var(--color-text-faint);font-size:var(--text-xs);">v1.0.2</span>
+  </div>
+  <div style="margin-top:var(--space-3);font-size:var(--text-xs);color:var(--color-text-faint);">
+    Discover more apps: <a href="http://tetramatrix.github.io/Sorana" target="_blank" rel="noopener" style="color:var(--color-text-muted);">Sorana</a> · <a href="http://tetramatrix.github.io/TabNeuron" target="_blank" rel="noopener" style="color:var(--color-text-muted);">TabNeuron</a> · <a href="http://tetramatrix.github.io/RyzenZPilot" target="_blank" rel="noopener" style="color:var(--color-text-muted);">RyzenZPilot</a> · <a href="http://tetramatrix.github.io/Aicono" target="_blank" rel="noopener" style="color:var(--color-text-muted);">Aicono</a>
+  </div>
+  <span style="margin-top:var(--space-2);display:block;">Supports Whisper, Lemonade, External WebSocket, Ollama, and LM Studio backends</span>
+</footer>
+
+<noscript>
+  <div style="text-align:center;padding:var(--space-8);color:var(--color-text-muted);font-size:var(--text-sm);">
+    Audrix is free. If you find it useful, consider supporting via the links in the footer.
+  </div>
+</noscript>
+
+<button id="backToTop" title="Back to top" aria-label="Back to top">↑</button>
+
+<script>
+(function() {
+  'use strict';
+  var toggle = document.getElementById('menuToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle && links) {
+    toggle.addEventListener('click', function() {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      links.classList.toggle('open');
+      toggle.textContent = expanded ? '☰' : '✕';
+    });
+  }
+  var themeBtn = document.getElementById('themeToggle');
+  var stored = localStorage.getItem('theme');
+  var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  var theme = stored || (prefersLight ? 'light' : 'dark');
+  document.documentElement.setAttribute('data-theme', theme);
+  if (themeBtn) {
+    themeBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    themeBtn.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
+  }
+  var toggleBtn = document.getElementById('toggleFeatures');
+  var moreFeatures = document.getElementById('moreFeatures');
+  if (toggleBtn && moreFeatures) {
+    toggleBtn.addEventListener('click', function() {
+      var visible = moreFeatures.style.display !== 'none';
+      moreFeatures.style.display = visible ? 'none' : 'grid';
+      toggleBtn.textContent = visible ? '4 more features ↓' : 'Show fewer ↑';
+    });
+  }
+
+  /* Nav shadow on scroll */
+  var nav = document.querySelector('nav');
+  if (nav) {
+    var onScroll = function() { nav.classList.toggle('scrolled', window.scrollY > 10); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* Active nav link highlight */
+  var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  if (navAnchors.length && 'IntersectionObserver' in window) {
+    var sectionMap = {};
+    navAnchors.forEach(function(a) { sectionMap[a.getAttribute('href').slice(1)] = a; });
+    var activeObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var link = sectionMap[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navAnchors.forEach(function(a) { a.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    Object.keys(sectionMap).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) activeObserver.observe(el);
+    });
+  }
+
+  /* Section reveal on scroll */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.section, .showcase').forEach(function(el) {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  }
+
+  /* Back to top */
+  var btt = document.getElementById('backToTop');
+  if (btt) {
+    window.addEventListener('scroll', function() {
+      btt.classList.toggle('show', window.scrollY > 600);
+    }, { passive: true });
+    btt.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+})();
+</script>
+
+<script>
+(function() {
+  'use strict';
+  /* Counter animation for stat numbers */
+  function animateCount(el, target, suffix) {
+    suffix = suffix || '';
+    var start = 0;
+    var duration = 900;
+    var startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(start + (target - start) * eased) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('.stat-number').forEach(function(el) {
+    var text = el.textContent;
+    if (text === '∞' || text === '100%') { /* keep as-is */ }
+    else if (/^\d+\+$/.test(text)) {
+      var num = parseInt(text, 10);
+      /* trigger when visible */
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCount(el, num, '+');
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(el);
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
