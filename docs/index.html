@@ -19,14 +19,14 @@
      crossorigin="anonymous"></script>
 
 <title>Audrix - Real-Time Local Intelligence Engine</title>
-<meta name="description" content="Audrix is a real-time local intelligence engine for Windows. Capture microphone or system audio for speech-to-text, or read and analyze any screen region with local OCR and Vision. 100% offline.">
+<meta name="description" content="Audrix is a real-time local intelligence engine for Windows. 17+ Whisper models for 100% offline speech-to-text, plus live transcript analysis with 15 AI providers — local Ollama, LM Studio, Lemonade, or cloud OpenAI, Anthropic, StepFun, Groq, and more.">
 <meta property="og:title" content="Audrix - Real-Time Local Intelligence Engine">
-<meta property="og:description" content="Real-time local intelligence on Windows. Speech-to-text with noise suppression, plus local OCR and Vision for screen analysis. 100% offline.">
+<meta property="og:description" content="Real-time local intelligence on Windows. 17+ Whisper models for offline speech-to-text, plus live transcript analysis with 15 AI providers — local or cloud. Audio stays on your machine.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tetramatrix.github.io/Audrix/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Audrix - Real-Time Local Intelligence Engine">
-<meta name="twitter:description" content="Real-time local intelligence on Windows. Speech-to-text with noise suppression, plus local OCR and Vision for screen analysis. 100% offline.">
+<meta name="twitter:description" content="Real-time local intelligence on Windows. 17+ Whisper models for offline speech-to-text, plus live transcript analysis with 15 AI providers — local or cloud. Audio stays on your machine.">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="canonical" href="https://tetramatrix.github.io/Audrix/">
 <meta name="robots" content="index, follow">
@@ -51,7 +51,8 @@
     "https://github.com/Tetramatrix/Audrix",
     "https://www.softpedia.com/get/Office-tools/Audrix.shtml",
     "https://alternativeto.net/software/audrix"
-  ]
+  ],
+  "description": "17+ Whisper models for 100% offline speech-to-text, plus live transcript analysis with 15 AI providers — local Ollama, LM Studio, Lemonade, or cloud OpenAI, Anthropic, StepFun, Groq, and more. Audio stays on your machine."
 }
 </script>
 <script type="application/ld+json">
@@ -72,7 +73,7 @@
       "name": "Does my data leave my machine?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. All processing happens locally on your machine. Your audio and screen data never touch the cloud."
+        "text": "Transcription audio stays 100% local. Transcript text is only sent to the cloud if you choose a cloud LLM provider for live analysis. You can run entirely offline with local providers like Ollama, LM Studio, or Lemonade."
       }
     },
     {
@@ -88,7 +89,7 @@
       "name": "What transcription backends are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Audrix supports Whisper, Lemonade (AMD Ryzen NPU acceleration via FastFlowLM), and any external WebSocket or HTTP transcription endpoint. Backends are hot-swappable at runtime."
+        "text": "Audrix supports WhisperLive (11 Whisper models: tiny through large-v3, plus distil-small.en and Parakeet TDT 0.6B), Lemonade NPU acceleration with dynamic model discovery, and any external WebSocket or HTTP transcription endpoint. Backends are hot-swappable at runtime."
       }
     },
     {
@@ -236,6 +237,7 @@ nav.scrolled {
 }
 .nav-links a:hover { color: var(--color-text); }
 .nav-links a.active { color: var(--color-text); font-weight: 500; }
+.nav-links .btn-primary { color: #0a1a17; }
 .btn-primary {
   background: var(--color-primary);
   color: #0a1a17;
@@ -1357,7 +1359,7 @@ footer {
   </div>
   <h1>Real-time intelligence.<br><em>No cloud required.</em></h1>
   <p class="hero-sub">
-    Audrix captures live audio and on-screen visuals, transcribes with noise suppression and crosstalk detection, and runs OCR and Vision locally. Offline. Private. Yours.
+    Audrix captures live audio and on-screen visuals, transcribes with noise suppression and crosstalk detection, and runs OCR and Vision locally. Transcription runs 100% offline. Live AI analysis can run locally or via your preferred cloud provider, with 15 providers including OpenAI, Anthropic, StepFun, Groq, OpenRouter, and local Ollama and LM Studio.
   </p>
   <div class="hero-actions">
     <a href="https://github.com/Tetramatrix/Audrix/releases/latest/download/Audrix_Community.exe" class="btn-primary">Get Audrix Free</a>
@@ -1393,8 +1395,8 @@ footer {
       <span class="stat-label">Noise Suppression</span>
     </div>
     <div class="stat">
-      <span class="stat-number">10+</span>
-      <span class="stat-label">Backends</span>
+      <span class="stat-number">17+</span>
+      <span class="stat-label">Models</span>
     </div>
     <div class="stat">
       <span class="stat-number">100%</span>
@@ -1417,7 +1419,7 @@ footer {
     <div class="step">
       <div class="step-number">1</div>
       <h3>Choose a backend</h3>
-      <p>Use Whisper, Lemonade NPU acceleration, or any external transcription endpoint. Switch at runtime without reinstalling.</p>
+      <p>Use WhisperLive (11 models), Lemonade NPU acceleration, or any external transcription endpoint. Switch at runtime without reinstalling.</p>
     </div>
     <div class="step-arrow">→</div>
     <div class="step">
@@ -1464,12 +1466,12 @@ footer {
 <section class="section" id="overview">
   <div class="section-header">
     <h2 id="overview-h2">Your audio and screen, <em>analyzed instantly.</em></h2>
-    <p>Audrix transforms live audio and on-screen visuals into immediate, actionable insights. Built for speed and absolute privacy.</p>
+    <p>Audrix transforms live audio and on-screen visuals into immediate, actionable insights. Transcription runs 100% offline. Live AI analysis can run locally or via your preferred cloud provider.</p>
   </div>
   <div class="overview-grid">
     <div class="overview-text">
       <p><strong>Audrix is a real-time local intelligence engine for Windows.</strong> It captures microphone or system output for crisp speech-to-text with advanced noise suppression and crosstalk detection, while simultaneously running live AI analysis on the audio stream as it happens. Pair this with local OCR and Vision capabilities to instantly read and analyze any section of your screen.</p>
-      <p>Built for low-latency transcription with configurable noise suppression, automatic crosstalk detection, and support for multiple providers. <strong>Every model executes entirely offline.</strong> Your audio and screen data never touch the cloud.</p>
+      <p>Built for low-latency transcription with configurable noise suppression, automatic crosstalk detection, and 17+ selectable models. <strong>Transcription runs 100% offline.</strong> Your audio never leaves your machine.</p>
       <p>Runs from a USB stick. No install, no account, no cloud sync.</p>
     </div>
     <div class="overview-video">
@@ -1509,7 +1511,7 @@ footer {
       <p>Cloud STT services send your audio to remote servers. You pay per minute, lose privacy, and depend on internet connectivity.</p>
       <ul>
         <li><strong>Fully offline:</strong> All processing happens on your machine</li>
-        <li><strong>Multiple backends:</strong> Whisper, Lemonade, External endpoints</li>
+         <li><strong>Multiple backends:</strong> 17+ models via WhisperLive, Lemonade, External endpoints</li>
         <li><strong>Zero recurring cost:</strong> Use free local models or bring your own API key</li>
       </ul>
     </div>
@@ -1584,7 +1586,7 @@ footer {
         </svg>
       </div>
       <h3>Flexible Backends</h3>
-      <p>Plug in Whisper, Lemonade NPU acceleration, or any external WebSocket or HTTP transcription endpoint. Switch at runtime without reinstalling.</p>
+      <p>17+ transcription models via WhisperLive (11 Whisper variants), Lemonade NPU acceleration, or any external WebSocket or HTTP transcription endpoint. Switch at runtime without reinstalling.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">
@@ -1601,8 +1603,8 @@ footer {
           <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
         </svg>
       </div>
-      <h3>100% Offline</h3>
-      <p>Every model executes entirely on your machine. Your audio, transcripts, and screen captures never touch the cloud. No subscriptions, no API keys, no limits.</p>
+      <h3>100% Offline Transcription</h3>
+      <p>Transcription runs entirely on your machine. Your audio never leaves your device. Live AI analysis can use local providers or your preferred cloud service — your choice.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">
@@ -1636,15 +1638,6 @@ footer {
     <div class="feature-card">
       <div class="feature-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 12h-4"/><path d="M2 12h4"/><path d="M12 2v4"/><path d="M12 22v-4"/><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>
-        </svg>
-      </div>
-      <h3>Health Dashboard</h3>
-      <p>First-boot setup wizard plus ongoing monitoring. Covers OCR, search engines, model cache, backends, and more.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>
         </svg>
       </div>
@@ -1671,7 +1664,7 @@ footer {
     </div>
   </div>
   <div style="text-align:center;margin:var(--space-8) 0 var(--space-6);">
-    <button id="toggleFeatures" class="btn-outline" style="font-size:var(--text-sm);">4 more features ↓</button>
+    <button id="toggleFeatures" class="btn-outline" style="font-size:var(--text-sm);">3 more features ↓</button>
   </div>
   <div class="screenshot-strip">
     <figure class="screenshot-card">
@@ -1771,11 +1764,11 @@ footer {
       </tr>
     </thead>
     <tbody>
-      <tr><td>Runs fully offline &amp; private</td><td class="win">Your machine, your data. No internet needed.</td><td>Cloud only. Your data on their servers.</td><td>Local processing, limited features</td></tr>
+      <tr><td>Runs fully offline &amp; private</td><td class="win">Transcription is 100% local. Analysis runs on your machine or via your chosen cloud provider.</td><td>Cloud only. Your data on their servers.</td><td>Local processing, limited features</td></tr>
       <tr><td>System audio capture</td><td class="win">Loopback + mic, dual-stream mode</td><td>Microphone only</td><td>Rare or unsupported</td></tr>
       <tr><td>Crosstalk suppression</td><td class="win">Dual-stream distinguishes speakers</td><td>Basic noise removal only</td><td>Unsupported</td></tr>
       <tr><td>Local OCR &amp; Vision</td><td class="win">Built-in screen analysis</td><td>Cloud-only vision APIs</td><td>Unsupported</td></tr>
-      <tr><td>Privacy</td><td class="win">Zero data leaves your machine</td><td>Audio sent to remote servers</td><td>Local but no ecosystem</td></tr>
+      <tr><td>Privacy</td><td class="win">Audio stays local. Transcript analysis only sent if you choose a cloud provider.</td><td>Audio sent to remote servers</td><td>Local but no ecosystem</td></tr>
       <tr><td>Cost</td><td class="win">$0 — free community build</td><td>$0.006–$0.03 per minute</td><td>Free but limited</td></tr>
       <tr><td>NPU acceleration</td><td class="win">AMD Ryzen AI via Lemonade</td><td>Server-side GPUs only</td><td>CPU-bound</td></tr>
       <tr><td>Portable</td><td class="win">Runs from USB, no install</td><td>App install or web only</td><td>App install required</td></tr>
@@ -1824,7 +1817,7 @@ footer {
     <div class="feature-card">
       <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
       <h3>Privacy-conscious users</h3>
-      <p>Full transcription power with zero data leaving your machine. No accounts, no cloud sync, no tracking.</p>
+      <p>100% offline transcription with optional local or cloud AI analysis. No accounts, no cloud sync, no tracking unless you choose a cloud provider.</p>
     </div>
   </div>
 </section>
@@ -1841,38 +1834,75 @@ footer {
 
 <!-- PROVIDERS -->
 <section class="providers-section" id="providers">
-  <p class="section-label">Supported backends</p>
+  <p class="section-label">Supported providers</p>
   <p class="section-label providers-sub-label">Transcription Engines</p>
+  <p class="providers-sub-label">WhisperLive (11 models), Lemonade NPU (dynamic discovery), External WebSocket</p>
   <div class="providers-grid">
     <div class="provider-chip">
       <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L1 4v8l7 3 7-3V4L8 1z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
-      Whisper
+      WhisperLive
     </div>
     <div class="provider-chip">
       <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="6" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="#8a8f98"/></svg>
-      Lemonade
+      Lemonade NPU
     </div>
     <div class="provider-chip">
       <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="7" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="#8a8f98"/></svg>
       External WebSocket
     </div>
+  </div>
+  <p class="section-label providers-sub-label">Live Analysis Providers</p>
+  <p class="providers-sub-label">Cloud</p>
+  <div class="providers-grid">
     <div class="provider-chip">
       <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L14 8L8 15L2 8L8 1Z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
-      Ollama
+      OpenAI
     </div>
     <div class="provider-chip">
       <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><rect x="2" y="2" width="12" height="12" rx="2" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
-      LM Studio
+      Anthropic
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="6" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="#8a8f98"/></svg>
+      Groq
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L1 4v8l7 3 7-3V4L8 1z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      StepFun
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M2 7h12M8 2v12" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      OpenRouter
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><rect x="2" y="7" width="12" height="7" rx="2" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      NVIDIA NIM
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="7" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="#8a8f98"/></svg>
+      Mistral
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L14 8L8 15L2 8L8 1Z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      Gemini
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M4 4h8v8H4z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      DeepSeek
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="6" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="#8a8f98"/></svg>
+      XiaomiMiMo
+    </div>
+    <div class="provider-chip">
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><rect x="2" y="2" width="12" height="12" rx="2" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
+      CommandCode
     </div>
   </div>
   <p class="section-label providers-sub-label">Local / On-premise</p>
   <div class="providers-grid">
     <div class="provider-chip">
       <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="6" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="#8a8f98"/></svg>
-      Lemonade
-    </div>
-    <div class="provider-chip">
-      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M8 1L14 8L8 15L2 8L8 1Z" fill="none" stroke="#8a8f98" stroke-width="1.5"/></svg>
       Ollama
     </div>
     <div class="provider-chip">
@@ -1880,8 +1910,8 @@ footer {
       LM Studio
     </div>
     <div class="provider-chip">
-      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><path d="M2 8h12M8 2v12" stroke="#8a8f98" stroke-width="1.5"/></svg>
-      Llama.cpp
+      <svg class="icon" viewBox="0 0 16 16" fill="#8a8f98"><circle cx="8" cy="8" r="6" fill="none" stroke="#8a8f98" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="#8a8f98"/></svg>
+      Local Lemonade
     </div>
   </div>
 </section>
@@ -1985,6 +2015,7 @@ footer {
   <div class="section-header">
     <h2 id="setup-h2">Get started in <em>minutes.</em></h2>
     <p>Download, extract, and run. No installation required.</p>
+  <p>Choose from 17+ Whisper models via WhisperLive, Lemonade NPU, or external endpoints. Add live AI analysis with 15 providers — local or cloud.</p>
   </div>
   <div class="setup-grid">
     <div class="setup-card">
@@ -2146,7 +2177,7 @@ footer {
     </details>
     <details class="faq-item">
       <summary>Does my data leave my machine?</summary>
-      <p>No. All processing happens locally on your machine. Your audio and screen data never touch the cloud.</p>
+      <p>Transcription audio stays 100% local. Transcript text is only sent to the cloud if you choose a cloud LLM provider for live analysis. You can run entirely offline with local providers like Ollama, LM Studio, or Lemonade.</p>
     </details>
     <details class="faq-item">
       <summary>Can I run it from a USB stick?</summary>
@@ -2154,7 +2185,7 @@ footer {
     </details>
     <details class="faq-item">
       <summary>What transcription backends are supported?</summary>
-      <p>Audrix supports Whisper, Lemonade (AMD Ryzen NPU acceleration via FastFlowLM), and any external WebSocket or HTTP transcription endpoint. Backends are hot-swappable at runtime.</p>
+      <p>Audrix supports WhisperLive (11 Whisper models: tiny through large-v3, plus distil-small.en and Parakeet TDT 0.6B), Lemonade NPU acceleration with dynamic model discovery, and any external WebSocket or HTTP transcription endpoint. Backends are hot-swappable at runtime.</p>
     </details>
     <details class="faq-item">
       <summary>Does it support system audio capture?</summary>
@@ -2195,7 +2226,7 @@ footer {
   <div style="margin-top:var(--space-3);font-size:var(--text-xs);color:var(--color-text-faint);">
     Discover more apps: <a href="http://tetramatrix.github.io/Sorana" target="_blank" rel="noopener" style="color:var(--color-text-muted);">Sorana</a> · <a href="http://tetramatrix.github.io/TabNeuron" target="_blank" rel="noopener" style="color:var(--color-text-muted);">TabNeuron</a> · <a href="http://tetramatrix.github.io/RyzenZPilot" target="_blank" rel="noopener" style="color:var(--color-text-muted);">RyzenZPilot</a> · <a href="http://tetramatrix.github.io/Aicono" target="_blank" rel="noopener" style="color:var(--color-text-muted);">Aicono</a>
   </div>
-  <span style="margin-top:var(--space-2);display:block;">Supports Whisper, Lemonade, External WebSocket, Ollama, and LM Studio backends</span>
+  <span style="margin-top:var(--space-2);display:block;">17+ Whisper models via WhisperLive, Lemonade NPU, External WebSocket. 15 LLM analysis providers: OpenAI, Anthropic, Groq, StepFun, OpenRouter, NVIDIA NIM, Mistral, Gemini, DeepSeek, XiaomiMiMo, CommandCode, Ollama, LM Studio, Local Lemonade.</span>
 </footer>
 
 <noscript>
